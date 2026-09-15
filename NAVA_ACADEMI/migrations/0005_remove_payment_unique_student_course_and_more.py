@@ -7,15 +7,12 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('NAVA_ACADEMI', '0004_payment_remove_enrollment_unique_student_course_and_more'),
+        ('NAVA_ACADEMI', '0004_payment'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
-        migrations.RemoveConstraint(
-            model_name='payment',
-            name='unique_student_course',
-        ),
+        
         migrations.AddConstraint(
             model_name='enrollment',
             constraint=models.UniqueConstraint(fields=('student', 'course'), name='unique_student_course'),
