@@ -1,0 +1,111 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>دوره‌ها | Nova Academy</title>
+
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+</head>
+
+<body>
+
+    <main class="dashboard">
+
+        <!-- Header -->
+
+        <header class="dashboard-header">
+
+            <div class="brand">
+                Nova Academy 🎓
+            </div>
+
+            <a href="{% url 'student_dashboard' %}" class="logout">
+                داشبورد
+            </a>
+
+        </header>
+
+
+        <!-- Page Title -->
+
+        <section class="welcome">
+
+            <h1>
+                دوره‌های آموزشی 📚
+            </h1>
+
+            <p>
+                دوره‌های فعال آکادمی نووا را مشاهده کنید.
+            </p>
+
+        </section>
+
+
+        <!-- Courses -->
+
+        <section class="dashboard-cards">
+
+            {% for course in courses %}
+
+                <div class="dashboard-card">
+
+                    <div class="card-icon">
+                        📚
+                    </div>
+
+                    <h3>
+                        {{ course.title }}
+                    </h3>
+
+                    <p>
+                        {{ course.description }}
+                    </p>
+
+                    <br>
+
+                    <p>
+                        <strong>مدرس:</strong>
+                        {{ course.teacher }}
+                    </p>
+
+                    <p>
+                        <strong>ظرفیت:</strong>
+                        {{ course.capacity }} نفر
+                    </p>
+
+                    <p>
+                        <strong>شهریه:</strong>
+                        {{ course.price }} تومان
+                    </p>
+
+                    <p>
+                        <strong>شروع دوره:</strong>
+                        {{ course.start_date }}
+                    </p>
+
+                    <a href="{% url 'course_detail' course.id %}">
+                        مشاهده دوره
+                    </a>
+
+                </div>
+
+            {% empty %}
+
+                <p>
+                    در حال حاضر دوره فعالی وجود ندارد.
+                </p>
+
+            {% endfor %}
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ course.title }} | Nova Academy</title>
+
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+</head>
+
+<body>
+
+    <main class="dashboard">
+
+            {% if message %}
+        <div class="course-message">
+            {{ message }}
+        </div>
+            {% endif %}
+
+        <header class="dashboard-header">
+
+            <div class="brand">
+                Nova Academy 🎓
+            </div>
+
+            <a href="{% url 'course_list' %}" class="logout">
+                بازگشت به دوره‌ها
+            </a>
+
+        </header>
+
+        <section class="welcome">
+
+            <h1>
+                {{ course.title }}
+            </h1>
+
+            <p>
+                {{ course.description }}
+            </p>
+
+        </section>
+
+        <section class="profile-box">
+
+            <h2>
+                اطلاعات دوره
+            </h2>
+
+            <div class="profile-info">
+                
+                <br>
+
+               <form method="POST" action="{% url 'enroll_course' course.id %}" class="enroll-form">
+
+                    {% csrf_token %}
+
+                    <button type="submit" class="enroll-button">
+                        ثبت‌نام در این دوره
+                    </button>
+
+                </form>
+
+                <div class="info-item">
+                    <span class="info-label">مدرس</span>
+                    <span class="info-value">
+                        {{ course.teacher }}
+                    </span>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-label">ظرفیت</span>
+                    <span class="info-value">
+                        {{ course.capacity }} نفر
+                    </span>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-label">شهریه</span>
+                    <span class="info-value">
+                        {{ course.price }} تومان
+                    </span>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-label">شروع دوره</span>
+                    <span class="info-value">
+                        {{ course.start_date }}
+                    </span>
+                </div>
+                
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

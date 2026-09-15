@@ -1,0 +1,118 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Vazirmatn", sans-serif;
+    background: #11131a;
+    color: #ffffff;
+}
+
+.signup-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.signup-card {
+    width: 100%;
+    max-width: 520px;
+    background: #1b1e27;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+.signup-title {
+    margin: 0 0 10px;
+    font-size: 32px;
+    font-weight: 800;
+}
+
+.signup-description {
+    margin: 0 0 30px;
+    color: #aeb3c2;
+    line-height: 1.8;
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #e7e9ef;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #353947;
+    border-radius: 12px;
+    background: #12151c;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: 0.2s ease;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #8b5cf6;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+}
+
+.error {
+    color: #ff7b7b;
+    font-size: 13px;
+}
+
+.signup-button {
+    border: none;
+    border-radius: 12px;
+    padding: 15px;
+    margin-top: 8px;
+    background: #8b5cf6;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.signup-button:hover {
+    transform: translateY(-2px);
+    background: #7c4ee8;
+}
+
+@media (max-width: 600px) {
+    .signup-card {
+        padding: 28px 20px;
+    }
+
+    .signup-title {
+        font-size: 26px;
+    }
+}

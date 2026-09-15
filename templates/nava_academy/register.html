@@ -1,0 +1,259 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="آکادمی نووا - سامانه آموزش آنلاین و مدیریت کلاس‌های آموزشگاه">
+  <title>آکادمی نووا | آموزش، رشد، آینده</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <div class="page-glow glow-one"></div>
+  <div class="page-glow glow-two"></div>
+
+  <header class="site-header" id="top">
+    <div class="container nav-wrap">
+      <a class="brand" href="#top" aria-label="صفحه اصلی آکادمی نووا">
+        <span class="brand-mark"><span>ن</span></span>
+        <span class="brand-copy">
+          <strong>آکادمی نووا</strong>
+          <small>NOVA ACADEMY</small>
+        </span>
+      </a>
+
+      <button class="mobile-menu" id="mobileMenu" aria-label="باز کردن منو" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="main-nav" id="mainNav">
+        <a class="active" href="#top">خانه</a>
+        <a href="#courses">دوره‌ها</a>
+        <a href="#features">امکانات</a>
+        <a href="#about">درباره ما</a>
+        <a href="#contact">تماس با ما</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="login-link" href="login.html">ورود</a>
+        <a class="btn btn-primary btn-small" href="register.html">ثبت‌نام رایگان <span>←</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content reveal">
+          <div class="eyebrow"><span class="live-dot"></span> مسیر یادگیری تو، از همین‌جا شروع می‌شود</div>
+          <h1>یاد بگیر، <em>رشد کن</em>،<br>آینده‌ات را بساز.</h1>
+          <p class="hero-text">
+            در آکادمی نووا، دوره‌های کاربردی را با مدرس‌های حرفه‌ای یاد بگیر،
+            پیشرفتت را دنبال کن و در یک محیط آموزشی مدرن قدم‌به‌قدم جلو برو.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#courses">مشاهده دوره‌ها <span>←</span></a>
+            <a class="btn btn-ghost" href="#features"><span class="play-icon">▶</span> چرا نووا؟</a>
+          </div>
+
+          <div class="trust-row">
+            <div class="avatar-stack" aria-label="دانشجویان">
+              <span class="avatar a1">م</span>
+              <span class="avatar a2">س</span>
+              <span class="avatar a3">ر</span>
+              <span class="avatar a4">ن</span>
+              <span class="avatar more">+</span>
+            </div>
+            <div class="trust-copy">
+              <strong>+۲,۵۰۰</strong>
+              <span>دانشجوی فعال در نووا</span>
+            </div>
+            <div class="rating">
+              <strong>۴.۹</strong>
+              <span class="stars">★★★★★</span>
+              <small>رضایت دانشجویان</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal reveal-delay">
+          <div class="orb orb-main"></div>
+          <div class="orb orb-small"></div>
+
+          <div class="dashboard-card">
+            <div class="dashboard-top">
+              <div>
+                <span class="mini-label">داشبورد یادگیری</span>
+                <h3>سلام، سارا 👋</h3>
+              </div>
+              <div class="notification"><span></span>♧</div>
+            </div>
+
+            <div class="progress-panel">
+              <div class="progress-heading">
+                <span>پیشرفت این هفته</span>
+                <strong>۷۸٪</strong>
+              </div>
+              <div class="progress-track"><div class="progress-fill"></div></div>
+              <div class="progress-meta"><span>۱۲ ساعت مطالعه</span><span>هدف: ۱۵ ساعت</span></div>
+            </div>
+
+            <div class="lesson-card">
+              <div class="lesson-icon">JS</div>
+              <div class="lesson-info">
+                <span>ادامه دوره</span>
+                <strong>JavaScript حرفه‌ای</strong>
+                <small>جلسه ۱۲ از ۱۸</small>
+              </div>
+              <button class="round-arrow" aria-label="ادامه دوره">←</button>
+            </div>
+
+            <div class="stats-row">
+              <div class="stat-box"><span>دوره‌ها</span><strong>۴</strong><small>فعال</small></div>
+              <div class="stat-box"><span>ساعت یادگیری</span><strong>۳۸</strong><small>این ماه</small></div>
+              <div class="stat-box"><span>امتیاز</span><strong>۹۲</strong><small>از ۱۰۰</small></div>
+            </div>
+          </div>
+
+          <div class="floating-card certificate">
+            <div class="float-icon">✓</div>
+            <div><strong>یک قدم تا گواهی!</strong><small>دوره Python پیشرفته</small></div>
+          </div>
+
+          <div class="floating-card class-live">
+            <span class="pulse"></span>
+            <div><strong>کلاس زنده</strong><small>شروع در ۱۰ دقیقه</small></div>
+            <span class="online">LIVE</span>
+          </div>
+
+          <div class="code-bubble">&lt;/&gt;</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="logo-strip">
+      <div class="container">
+        <span>یادگیری با استانداردهای حرفه‌ای</span>
+        <div class="logo-items">
+          <b>PYTHON</b><b>DJANGO</b><b>JavaScript</b><b>UI/UX</b><b>DATA</b>
+        </div>
+      </div>
+    </section>
+
+    <section class="section courses-section" id="courses">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <span class="section-kicker">دوره‌های محبوب</span>
+            <h2>مسیر مناسب خودت را پیدا کن.</h2>
+          </div>
+          <a href="#" class="view-all">مشاهده همه دوره‌ها <span>←</span></a>
+        </div>
+
+        <div class="course-grid">
+          <article class="course-card reveal">
+            <div class="course-cover cover-purple">
+              <span class="course-tag">پرفروش</span>
+              <div class="cover-code">PY<br><small>THON</small></div>
+              <span class="shape shape-one"></span><span class="shape shape-two"></span>
+            </div>
+            <div class="course-body">
+              <div class="course-meta"><span>برنامه‌نویسی</span><span>۲۴ جلسه</span></div>
+              <h3>Python از صفر تا بازار کار</h3>
+              <p>پروژه‌محور، مناسب شروع جدی برنامه‌نویسی</p>
+              <div class="course-footer"><strong>۲,۴۹۰,۰۰۰ <small>تومان</small></strong><a href="#">جزئیات ←</a></div>
+            </div>
+          </article>
+
+          <article class="course-card reveal reveal-delay">
+            <div class="course-cover cover-blue">
+              <span class="course-tag">جدید</span>
+              <div class="cover-code django">DJ<br><small>ANGO</small></div>
+              <span class="shape shape-three"></span><span class="shape shape-four"></span>
+            </div>
+            <div class="course-body">
+              <div class="course-meta"><span>Backend</span><span>۲۰ جلسه</span></div>
+              <h3>Django حرفه‌ای و REST API</h3>
+              <p>ساخت وب‌اپلیکیشن واقعی با پایتون و جنگو</p>
+              <div class="course-footer"><strong>۳,۱۹۰,۰۰۰ <small>تومان</small></strong><a href="#">جزئیات ←</a></div>
+            </div>
+          </article>
+
+          <article class="course-card reveal reveal-delay-2">
+            <div class="course-cover cover-orange">
+              <span class="course-tag">محبوب</span>
+              <div class="cover-code js">JS<br><small>CRIPT</small></div>
+              <span class="shape shape-five"></span><span class="shape shape-six"></span>
+            </div>
+            <div class="course-body">
+              <div class="course-meta"><span>Frontend</span><span>۱۸ جلسه</span></div>
+              <h3>JavaScript مدرن</h3>
+              <p>از مبانی تا ساخت پروژه‌های تعاملی حرفه‌ای</p>
+              <div class="course-footer"><strong>۲,۱۹۰,۰۰۰ <small>تومان</small></strong><a href="#">جزئیات ←</a></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section features-section" id="features">
+      <div class="container feature-grid">
+        <div class="feature-intro reveal">
+          <span class="section-kicker">چرا آکادمی نووا؟</span>
+          <h2>فقط دوره نمی‌خری؛<br><em>مسیر یادگیری</em> می‌سازی.</h2>
+          <p>همه‌چیز برای اینکه یادگیری منظم، قابل اندازه‌گیری و لذت‌بخش باشد، در یک محیط یکپارچه کنار هم قرار گرفته است.</p>
+          <a class="btn btn-dark" href="register.html">شروع یادگیری <span>←</span></a>
+        </div>
+
+        <div class="feature-list">
+          <div class="feature-item reveal"><div class="feature-number">۰۱</div><div><h3>کلاس‌های زنده و ضبط‌شده</h3><p>در زمان مناسب خودت یاد بگیر و هیچ جلسه‌ای را از دست نده.</p></div><div class="feature-symbol">◌</div></div>
+          <div class="feature-item reveal reveal-delay"><div class="feature-number">۰۲</div><div><h3>داشبورد پیشرفت شخصی</h3><p>ساعت مطالعه، نمره‌ها و مسیر پیشرفتت همیشه جلوی چشم توست.</p></div><div class="feature-symbol">↗</div></div>
+          <div class="feature-item reveal reveal-delay-2"><div class="feature-number">۰۳</div><div><h3>پرداخت امن و ثبت‌نام سریع</h3><p>ثبت‌نام در دوره‌ها و مدیریت پرداخت‌ها ساده و یکپارچه است.</p></div><div class="feature-symbol">⌁</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section stats-section" id="about">
+      <div class="container stats-container">
+        <div class="big-stat"><strong data-counter="2500">۰</strong><span>+</span><p>دانشجوی فعال</p></div>
+        <div class="big-stat"><strong data-counter="48">۰</strong><span>+</span><p>دوره تخصصی</p></div>
+        <div class="big-stat"><strong data-counter="35">۰</strong><span>+</span><p>مدرس حرفه‌ای</p></div>
+        <div class="big-stat"><strong data-counter="96">۰</strong><span>%</span><p>رضایت دانشجویان</p></div>
+      </div>
+    </section>
+
+    <section class="cta-section" id="contact">
+      <div class="container cta-card reveal">
+        <div class="cta-content">
+          <span class="section-kicker">آماده‌ای؟</span>
+          <h2>اولین قدم را امروز بردار.</h2>
+          <p>ثبت‌نام کن و مسیر یادگیری شخصی خودت را در نووا شروع کن.</p>
+          <a class="btn btn-white" href="register.html">ساخت حساب کاربری <span>←</span></a>
+        </div>
+        <div class="cta-art"><span class="ring ring-1"></span><span class="ring ring-2"></span><span class="spark">✦</span><div class="cta-orb">N</div></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="brand footer-brand" href="#top"><span class="brand-mark"><span>ن</span></span><span class="brand-copy"><strong>آکادمی نووا</strong><small>NOVA ACADEMY</small></span></a>
+        <p>یادگیری بهتر، آینده روشن‌تر.</p>
+      </div>
+      <div class="footer-links"><strong>دسترسی سریع</strong><a href="#courses">دوره‌ها</a><a href="#features">امکانات</a><a href="#about">درباره ما</a></div>
+      <div class="footer-links"><strong>پشتیبانی</strong><a href="#">سؤالات متداول</a><a href="#">قوانین و مقررات</a><a href="#">تماس با ما</a></div>
+      <div class="newsletter"><strong>از نووا باخبر باش</strong><p>برای دریافت خبر دوره‌های جدید ایمیلت را وارد کن.</p><form id="newsletterForm"><input type="email" placeholder="ایمیل شما" required><button type="submit">←</button></form><small id="newsletterMsg"></small></div>
+    </div>
+    <div class="container footer-bottom"><span>© ۱۴۰۵ آکادمی نووا — تمامی حقوق محفوظ است.</span><span>ساخته‌شده با ♥ برای یادگیری</span></div>
+  </footer>
+
+  <button class="back-top" id="backTop" aria-label="بازگشت به بالا">↑</button>
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

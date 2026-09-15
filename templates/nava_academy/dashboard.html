@@ -1,0 +1,258 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>داشبورد | Nova Academy</title>
+
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+</head>
+
+<body>
+
+    <main class="dashboard">
+
+        <!-- Header -->
+
+        <header class="dashboard-header">
+
+            <div class="brand">
+                Nova Academy 🎓
+            </div>
+
+            <a href="{% url 'logout' %}" class="logout">
+                خروج از حساب
+            </a>
+
+        </header>
+
+
+        <!-- Welcome -->
+
+        <section class="welcome">
+
+            <h1>
+                سلام {{ user.first_name }} 👋
+            </h1>
+
+            <p>
+                به پنل دانش‌آموزی آکادمی نووا خوش آمدی.
+            </p>
+
+        </section>
+
+
+        <!-- Dashboard Cards -->
+
+        <section class="dashboard-cards">
+
+            <a href="{% url 'course_list' %}" class="dashboard-card">
+
+            <div class="card-icon">
+                📚
+            </div>
+
+            <h3>
+                دوره‌های موجود/فعال
+            </h3>
+
+            <p>
+                {{ enrollments|length }} دوره ثبت‌نام شده
+            </p>
+
+        </a>
+
+
+            <div class="dashboard-card">
+
+                <div class="card-icon">
+                    💳
+                </div>
+
+                <h3>
+                    وضعیت شهریه
+                </h3>
+
+                <p>
+                    وضعیت پرداخت شهریه در این بخش نمایش داده می‌شود.
+                </p>
+
+            </div>
+
+
+            <div class="dashboard-card">
+
+                <div class="card-icon">
+                    👤
+                </div>
+
+                <h3>
+                    پروفایل من
+                </h3>
+
+                <p>
+                    اطلاعات حساب کاربری شما در پایین صفحه قرار دارد.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- Profile-box -->
+        {% if pending_payments %}
+            <div class="course-message">
+                ⚠️ شما هنوز شهریه بعضی از دوره‌ها را پرداخت نکرده‌اید.
+
+                {% for payment in pending_payments %}
+                    <p>
+                        دوره:
+                        {{ payment.enrollment.course.title }}
+                    </p>
+
+                    <a href="{% url 'payment_page' payment.id %}">
+                        پرداخت شهریه
+                    </a>
+                {% endfor %}
+            </div>
+        {% endif %}
+        
+        <section class="profile-box">
+
+            <h2>
+                دوره‌های من 📚
+            </h2>
+
+            {% if enrollments %}
+
+                <div class="dashboard-cards">
+
+                    {% for enrollment in enrollments %}
+
+                        <a
+                            href="{% url 'course_detail' enrollment.course.id %}"
+                            class="dashboard-card"
+                        >
+
+                            <div class="card-icon">
+                                📚
+                            </div>
+
+                            <h3>
+                                {{ enrollment.course.title }}
+                            </h3>
+
+                            <p>
+                                مدرس:
+                                {{ enrollment.course.teacher }}
+                            </p>
+
+                            <p>
+                                شهریه:
+                                {{ enrollment.course.price }} تومان
+                            </p>
+
+                        </a>
+
+                    {% endfor %}
+
+                </div>
+
+            {% else %}
+
+                <p>
+                    هنوز در هیچ دوره‌ای ثبت‌نام نکرده‌اید.
+                </p>
+
+            {% endif %}
+
+        </section>
+
+
+        <!-- Profile -->
+
+        <section class="profile-box">
+
+            <h2>
+                اطلاعات حساب کاربری
+            </h2>
+
+            <div class="profile-info">
+
+                <div class="info-item">
+
+                    <span class="info-label">
+                        نام
+                    </span>
+
+                    <span class="info-value">
+                        {{ user.first_name }}
+                    </span>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <span class="info-label">
+                        نام خانوادگی
+                    </span>
+
+                    <span class="info-value">
+                        {{ user.last_name }}
+                    </span>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <span class="info-label">
+                        ایمیل
+                    </span>
+
+                    <span class="info-value">
+                        {{ user.email }}
+                    </span>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <span class="info-label">
+                        شماره موبایل
+                    </span>
+
+                    <span class="info-value">
+                        {{ profile.phone }}
+                    </span>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <span class="info-label">
+                        آدرس
+                    </span>
+
+                    <span class="info-value">
+                        {{ profile.address|default:"ثبت نشده" }}
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

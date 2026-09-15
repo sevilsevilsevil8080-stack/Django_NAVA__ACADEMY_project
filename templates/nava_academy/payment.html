@@ -1,0 +1,129 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>پرداخت شهریه | Nova Academy</title>
+
+    <link rel="stylesheet" href="{% static 'css/payment.css' %}">
+
+</head>
+
+<body>
+
+    <main class="payment-page">
+
+        <header class="payment-header">
+
+            <div class="brand">
+                Nova Academy 🎓
+            </div>
+
+            <a href="{% url 'student_dashboard' %}" class="back-button">
+                بازگشت به داشبورد
+            </a>
+
+        </header>
+
+
+        <section class="payment-card">
+
+            <h1 class="payment-title">
+                پرداخت شهریه 💳
+            </h1>
+
+            <p class="payment-subtitle">
+                اطلاعات پرداخت دوره خود را بررسی کنید.
+            </p>
+
+
+            <div class="payment-info">
+
+                <div class="info-item">
+
+                    <span class="info-label">
+                        دوره
+                    </span>
+
+                    <span class="info-value">
+                        {{ payment.enrollment.course.title }}
+                    </span>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <span class="info-label">
+                        مدرس
+                    </span>
+
+                    <span class="info-value">
+                        {{ payment.enrollment.course.teacher }}
+                    </span>
+
+                </div>
+                <div class="info-item">
+
+                    <span class="info-label">
+                        وضعیت پرداخت
+                    </span>
+
+                    <span class="info-value">
+                        {{ payment.get_status_display }}
+                    </span>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <span class="info-label">
+                        شماره پرداخت
+                    </span>
+
+                    <span class="info-value">
+                        #{{ payment.id }}
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="amount-box">
+
+                <span class="amount-label">
+                    مبلغ قابل پرداخت
+                </span>
+
+                <div class="amount">
+                    {{ payment.amount }} تومان
+                </div>
+
+            </div>
+
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <button type="submit" class="payment-button">
+                    پرداخت شهریه 💳
+                </button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

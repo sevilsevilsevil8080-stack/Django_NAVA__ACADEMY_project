@@ -1,0 +1,86 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ورود | Nova Academy</title>
+
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+
+<body>
+
+    <main class="login-page">
+
+        <section class="login-card">
+
+            <h1 class="login-title">
+                ورود به آکادمی نووا 🎓
+            </h1>
+
+            <p class="login-description">
+                برای ورود به حساب کاربری خود اطلاعاتتان را وارد کنید.
+            </p>
+
+            {% if error %}
+                <div class="login-error">
+                    {{ error }}
+                </div>
+            {% endif %}
+
+            <form method="POST" class="login-form">
+
+                {% csrf_token %}
+
+                <p>
+                    <label for="email">
+                        ایمیل
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="example@email.com"
+                        required
+                    >
+                </p>
+
+                <p>
+                    <label for="password">
+                        رمز عبور
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="رمز عبور خود را وارد کنید"
+                        required
+                    >
+                </p>
+
+                <button type="submit" class="login-button">
+                    ورود به حساب
+                </button>
+
+            </form>
+
+            <div class="login-footer">
+                حساب کاربری ندارید؟
+                <a href="{% url 'signup' %}">
+                    ثبت نام کنید
+                </a>
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>
