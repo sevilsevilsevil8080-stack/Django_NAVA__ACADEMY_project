@@ -39,8 +39,8 @@
       </nav>
 
       <div class="nav-actions">
-        <a class="login-link" href="login.html">ورود</a>
-        <a class="btn btn-primary btn-small" href="register.html">ثبت‌نام رایگان <span>←</span></a>
+        <a class="login-link" href="{% url 'login' %}">ورود</a>
+        <a class="btn btn-primary btn-small" href="{% url 'signup' %}">ثبت‌نام رایگان <span>←</span></a>
       </div>
     </div>
   </header>
@@ -207,7 +207,7 @@
           <span class="section-kicker">چرا آکادمی نووا؟</span>
           <h2>فقط دوره نمی‌خری؛<br><em>مسیر یادگیری</em> می‌سازی.</h2>
           <p>همه‌چیز برای اینکه یادگیری منظم، قابل اندازه‌گیری و لذت‌بخش باشد، در یک محیط یکپارچه کنار هم قرار گرفته است.</p>
-          <a class="btn btn-dark" href="register.html">شروع یادگیری <span>←</span></a>
+          <a class="btn btn-dark" href="{% url 'signup' %}">شروع یادگیری <span>←</span></a>
         </div>
 
         <div class="feature-list">
@@ -233,7 +233,7 @@
           <span class="section-kicker">آماده‌ای؟</span>
           <h2>اولین قدم را امروز بردار.</h2>
           <p>ثبت‌نام کن و مسیر یادگیری شخصی خودت را در نووا شروع کن.</p>
-          <a class="btn btn-white" href="register.html">ساخت حساب کاربری <span>←</span></a>
+          <a class="btn btn-white" href="{% url 'signup' %}">ساخت حساب کاربری <span>←</span></a>
         </div>
         <div class="cta-art"><span class="ring ring-1"></span><span class="ring ring-2"></span><span class="spark">✦</span><div class="cta-orb">N</div></div>
       </div>
