@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
@@ -7,253 +8,1243 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="آکادمی نووا - سامانه آموزش آنلاین و مدیریت کلاس‌های آموزشگاه">
   <title>آکادمی نووا | آموزش، رشد، آینده</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/theme.css' %}">
+
+<style>
+    /* =========================
+       Language Switcher
+       ========================= */
+
+    .language-switcher {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        direction: ltr !important;
+        margin: 0 12px !important;
+        padding: 0 !important;
+    }
+
+    .language-switcher form {
+        display: flex !important;
+        align-items: center !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #ffffff !important;
+        border: 1px solid #e8e5f5 !important;
+        border-radius: 12px !important;
+        padding: 3px !important;
+        box-shadow: 0 4px 12px rgba(91, 76, 180, 0.08) !important;
+    }
+
+    .language-switcher button {
+        appearance: none !important;
+        -webkit-appearance: none !important;
+
+        border: none !important;
+        outline: none !important;
+
+        background: transparent !important;
+
+        color: #77758a !important;
+
+        font-family: inherit !important;
+        font-size: 13px !important;
+        font-weight: 600 !important;
+
+        padding: 7px 10px !important;
+        margin: 0 !important;
+
+        border-radius: 9px !important;
+
+        cursor: pointer !important;
+
+        transition: all 0.2s ease !important;
+    }
+
+    .language-switcher button:hover {
+        background: #f1efff !important;
+        color: #6252e8 !important;
+    }
+
+    .language-switcher .active-language {
+        background: #6655f5 !important;
+        color: #ffffff !important;
+        box-shadow: 0 3px 8px rgba(102, 85, 245, 0.25) !important;
+    }
+
+    .language-switcher .active-language:hover {
+        background: #5b49e8 !important;
+        color: #ffffff !important;
+    }
+</style>
+
 </head>
+
 <body>
+
   <div class="page-glow glow-one"></div>
   <div class="page-glow glow-two"></div>
 
+  <!-- =========================
+       HEADER
+       ========================= -->
+
   <header class="site-header" id="top">
+
     <div class="container nav-wrap">
-      <a class="brand" href="#top" aria-label="صفحه اصلی آکادمی نووا">
-        <span class="brand-mark"><span>ن</span></span>
+
+      <a class="brand" href="#top" aria-label="{% trans 'صفحه اصلی آکادمی نووا' %}">
+        <span class="brand-mark">
+          <span>ن</span>
+        </span>
+
         <span class="brand-copy">
-          <strong>آکادمی نووا</strong>
+          <strong>{% trans "آکادمی نووا" %}</strong>
           <small>NOVA ACADEMY</small>
         </span>
       </a>
 
-      <button class="mobile-menu" id="mobileMenu" aria-label="باز کردن منو" aria-expanded="false">
-        <span></span><span></span><span></span>
+
+      <!-- Mobile Menu -->
+
+      <button
+          class="mobile-menu"
+          id="mobileMenu"
+          type="button"
+          aria-label="{% trans 'باز کردن منو' %}"
+          aria-expanded="false"
+          onclick="document.getElementById('mainNav').classList.toggle('mobile-open'); this.setAttribute('aria-expanded', document.getElementById('mainNav').classList.contains('mobile-open'));">
+          <span></span>
+          <span></span>
+          <span></span>
       </button>
 
+
+      <!-- Navigation -->
+
       <nav class="main-nav" id="mainNav">
-        <a class="active" href="#top">خانه</a>
-        <a href="#courses">دوره‌ها</a>
-        <a href="#features">امکانات</a>
-        <a href="#about">درباره ما</a>
-        <a href="#contact">تماس با ما</a>
+
+        <a class="active" href="#top">
+          {% trans "خانه" %}
+        </a>
+
+        <a href="#courses">
+          {% trans "دوره‌ها" %}
+        </a>
+
+        <a href="#features">
+          {% trans "امکانات" %}
+        </a>
+
+        <a href="#about">
+          {% trans "درباره ما" %}
+        </a>
+
+        <a href="#contact">
+          {% trans "تماس با ما" %}
+        </a>
+
+
+        <!-- Language -->
+
+        <div class="language-switcher">
+
+            <form action="{% url 'set_language' %}" method="post">
+
+                {% csrf_token %}
+
+                <input
+                    type="hidden"
+                    name="next"
+                    value="{{ request.get_full_path }}">
+
+                <button
+                    type="submit"
+                    name="language"
+                    value="fa">
+                    فا
+                </button>
+
+                <span></span>
+
+                <button
+                    type="submit"
+                    name="language"
+                    value="en">
+                    EN
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- Theme -->
+
+        <button
+          type="button"
+          class="theme-toggle"
+          aria-label="Switch to dark mode"
+          title="Dark Mode">
+          🌙
+        </button>
+
       </nav>
 
+
+      <!-- Desktop Actions -->
+
       <div class="nav-actions">
-        <a class="login-link" href="{% url 'login' %}">ورود</a>
-        <a class="btn btn-primary btn-small" href="{% url 'signup' %}">ثبت‌نام رایگان <span>←</span></a>
+
+        <a
+          class="login-link"
+          href="{% url 'login' %}">
+          {% trans "ورود" %}
+        </a>
+
+        <a
+          class="btn btn-primary btn-small"
+          href="{% url 'signup' %}">
+          {% trans "ثبت‌نام رایگان" %}
+          <span>←</span>
+        </a>
+
       </div>
+
     </div>
+
   </header>
 
-  <main>
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-content reveal">
-          <div class="eyebrow"><span class="live-dot"></span> مسیر یادگیری تو، از همین‌جا شروع می‌شود</div>
-          <h1>یاد بگیر، <em>رشد کن</em>،<br>آینده‌ات را بساز.</h1>
-          <p class="hero-text">
-            در آکادمی نووا، دوره‌های کاربردی را با مدرس‌های حرفه‌ای یاد بگیر،
-            پیشرفتت را دنبال کن و در یک محیط آموزشی مدرن قدم‌به‌قدم جلو برو.
-          </p>
 
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#courses">مشاهده دوره‌ها <span>←</span></a>
-            <a class="btn btn-ghost" href="#features"><span class="play-icon">▶</span> چرا نووا؟</a>
+  <!-- =========================
+       MAIN
+       ========================= -->
+
+  <main>
+
+
+    <!-- =========================
+         HERO
+         ========================= -->
+
+    <section class="hero">
+
+      <div class="container hero-grid">
+
+
+        <div class="hero-content reveal">
+
+          <div class="eyebrow">
+
+            <span class="live-dot"></span>
+
+            {% trans "مسیر یادگیری تو از همین‌جا شروع می‌شود" %}
+
           </div>
 
+
+          <h1>
+
+            {% trans "یاد بگیر," %}
+
+            <em>
+              {% trans "رشد کن" %}
+            </em>،
+
+            <br>
+
+            {% trans "آینده‌ات را بساز." %}
+
+          </h1>
+
+
+          <p class="hero-text">
+
+            {% trans "در آکادمی نووا، دوره‌های کاربردی را با مدرس‌های حرفه‌ای یاد بگیر، پیشرفتت را دنبال کن و در یک محیط آموزشی مدرن قدم‌به‌قدم جلو برو" %}
+
+          </p>
+
+
+          <div class="hero-actions">
+
+            <a
+              class="btn btn-primary"
+              href="#courses">
+
+              {% trans "مشاهده دوره‌ها" %}
+
+              <span>←</span>
+
+            </a>
+
+
+            <a
+              class="btn btn-ghost"
+              href="#features">
+
+              <span class="play-icon">▶</span>
+
+              {% trans "چرا نووا؟" %}
+
+            </a>
+
+          </div>
+
+
+          <!-- Trust -->
+
           <div class="trust-row">
-            <div class="avatar-stack" aria-label="دانشجویان">
+
+            <div
+              class="avatar-stack"
+              aria-label="{% trans 'دانشجویان' %}">
+
               <span class="avatar a1">م</span>
               <span class="avatar a2">س</span>
               <span class="avatar a3">ر</span>
               <span class="avatar a4">ن</span>
+
               <span class="avatar more">+</span>
+
             </div>
+
+
             <div class="trust-copy">
-              <strong>+۲,۵۰۰</strong>
-              <span>دانشجوی فعال در نووا</span>
+
+              <strong>
+                {% trans "students_count" %}
+              </strong>
+
+              <span>
+                {% trans "دانشجوی فعال در نووا" %}
+              </span>
+
             </div>
+
+
             <div class="rating">
-              <strong>۴.۹</strong>
-              <span class="stars">★★★★★</span>
-              <small>رضایت دانشجویان</small>
+
+              <strong>
+                {% trans "۴.۹" %}
+              </strong>
+
+              <span class="stars">
+                ★★★★★
+              </span>
+
+              <small>
+                {% trans "رضایت دانشجویان" %}
+              </small>
+
             </div>
+
           </div>
+
         </div>
 
+
+        <!-- =========================
+             HERO VISUAL
+             ========================= -->
+
         <div class="hero-visual reveal reveal-delay">
+
           <div class="orb orb-main"></div>
           <div class="orb orb-small"></div>
 
+
           <div class="dashboard-card">
+
             <div class="dashboard-top">
+
               <div>
-                <span class="mini-label">داشبورد یادگیری</span>
-                <h3>سلام، سارا 👋</h3>
+
+                <span class="mini-label">
+                  {% trans "داشبورد یادگیری" %}
+                </span>
+
+                <h3>
+                  {% trans "سلام، سارا 👋" %}
+                </h3>
+
               </div>
-              <div class="notification"><span></span>♧</div>
+
+              <div class="notification">
+                <span></span>♧
+              </div>
+
             </div>
+
 
             <div class="progress-panel">
+
               <div class="progress-heading">
-                <span>پیشرفت این هفته</span>
-                <strong>۷۸٪</strong>
+
+                <span>
+                  {% trans "پیشرفت این هفته" %}
+                </span>
+
+                <strong>
+                  {% trans "progress_percent" %}
+                </strong>
+
               </div>
-              <div class="progress-track"><div class="progress-fill"></div></div>
-              <div class="progress-meta"><span>۱۲ ساعت مطالعه</span><span>هدف: ۱۵ ساعت</span></div>
+
+
+              <div class="progress-track">
+
+                <div class="progress-fill"></div>
+
+              </div>
+
+
+              <div class="progress-meta">
+
+                <span>
+                  {% trans "study_hours" %}
+                </span>
+
+                <span>
+                  {% trans "study_goal" %}
+                </span>
+
+              </div>
+
             </div>
+
 
             <div class="lesson-card">
-              <div class="lesson-icon">JS</div>
-              <div class="lesson-info">
-                <span>ادامه دوره</span>
-                <strong>JavaScript حرفه‌ای</strong>
-                <small>جلسه ۱۲ از ۱۸</small>
+
+              <div class="lesson-icon">
+                JS
               </div>
-              <button class="round-arrow" aria-label="ادامه دوره">←</button>
+
+
+              <div class="lesson-info">
+
+                <span>
+                  {% trans "ادامه دوره" %}
+                </span>
+
+                <strong>
+                  JavaScript حرفه‌ای
+                </strong>
+
+                <small>
+                  {% trans "lesson_progress" %}
+                </small>
+
+              </div>
+
+
+              <button
+                class="round-arrow"
+                aria-label="{% trans 'ادامه دوره' %}">
+                ←
+              </button>
+
             </div>
+
 
             <div class="stats-row">
-              <div class="stat-box"><span>دوره‌ها</span><strong>۴</strong><small>فعال</small></div>
-              <div class="stat-box"><span>ساعت یادگیری</span><strong>۳۸</strong><small>این ماه</small></div>
-              <div class="stat-box"><span>امتیاز</span><strong>۹۲</strong><small>از ۱۰۰</small></div>
+
+
+              <div class="stat-box">
+
+                <span>
+                  {% trans "دوره‌ها" %}
+                </span>
+
+                <strong>
+                  {% trans "courses_count" %}
+                </strong>
+
+                <small>
+                  {% trans "فعال" %}
+                </small>
+
+              </div>
+
+
+              <div class="stat-box">
+
+                <span>
+                  {% trans "ساعت یادگیری" %}
+                </span>
+
+                <strong>
+                  {% trans "learning_hours" %}
+                </strong>
+
+                <small>
+                  {% trans "این ماه" %}
+                </small>
+
+              </div>
+
+
+              <div class="stat-box">
+
+                <span>
+                  {% trans "امتیاز" %}
+                </span>
+
+                <strong>
+                  {% trans "score_value" %}
+                </strong>
+
+                <small>
+                  {% trans "از ۱۰۰" %}
+                </small>
+
+              </div>
+
             </div>
+
           </div>
+
+
+          <!-- Certificate -->
 
           <div class="floating-card certificate">
-            <div class="float-icon">✓</div>
-            <div><strong>یک قدم تا گواهی!</strong><small>دوره Python پیشرفته</small></div>
+
+            <div class="float-icon">
+              ✓
+            </div>
+
+            <div>
+
+              <strong>
+                {% trans "یک قدم تا گواهی!" %}
+              </strong>
+
+              <small>
+                {% trans "دوره Python پیشرفته" %}
+              </small>
+
+            </div>
+
           </div>
+
+
+          <!-- Live Class -->
 
           <div class="floating-card class-live">
+
             <span class="pulse"></span>
-            <div><strong>کلاس زنده</strong><small>شروع در ۱۰ دقیقه</small></div>
-            <span class="online">LIVE</span>
+
+            <div>
+
+              <strong>
+                {% trans "کلاس زنده" %}
+              </strong>
+
+              <small>
+                {% trans "شروع در ۱۰ دقیقه" %}
+              </small>
+
+            </div>
+
+            <span class="online">
+              LIVE
+            </span>
+
           </div>
 
-          <div class="code-bubble">&lt;/&gt;</div>
+
+          <div class="code-bubble">
+            &lt;/&gt;
+          </div>
+
         </div>
+
       </div>
+
     </section>
+
+
+    <!-- =========================
+         LOGO STRIP
+         ========================= -->
 
     <section class="logo-strip">
+
       <div class="container">
-        <span>یادگیری با استانداردهای حرفه‌ای</span>
+
+        <span>
+          {% trans "یادگیری با استانداردهای حرفه‌ای" %}
+        </span>
+
         <div class="logo-items">
-          <b>PYTHON</b><b>DJANGO</b><b>JavaScript</b><b>UI/UX</b><b>DATA</b>
+
+          <b>PYTHON</b>
+          <b>DJANGO</b>
+          <b>JavaScript</b>
+          <b>UI/UX</b>
+          <b>DATA</b>
+
         </div>
+
       </div>
+
     </section>
 
-    <section class="section courses-section" id="courses">
+
+    <!-- =========================
+         COURSES
+         ========================= -->
+
+    <section
+      class="section courses-section"
+      id="courses">
+
       <div class="container">
+
+
         <div class="section-heading reveal">
+
           <div>
-            <span class="section-kicker">دوره‌های محبوب</span>
-            <h2>مسیر مناسب خودت را پیدا کن.</h2>
+
+            <span class="section-kicker">
+              {% trans "دوره‌های محبوب" %}
+            </span>
+
+            <h2>
+              {% trans "مسیر مناسب خودت را پیدا کن." %}
+            </h2>
+
           </div>
-          <a href="#" class="view-all">مشاهده همه دوره‌ها <span>←</span></a>
+
+
+          <a
+            href="#"
+            class="view-all">
+
+            {% trans "مشاهده همه دوره‌ها" %}
+
+            <span>←</span>
+
+          </a>
+
         </div>
+
 
         <div class="course-grid">
+
+
+          <!-- Python -->
+
           <article class="course-card reveal">
+
             <div class="course-cover cover-purple">
-              <span class="course-tag">پرفروش</span>
-              <div class="cover-code">PY<br><small>THON</small></div>
-              <span class="shape shape-one"></span><span class="shape shape-two"></span>
+
+              <span class="course-tag">
+                {% trans "پرفروش" %}
+              </span>
+
+              <div class="cover-code">
+                PY<br>
+                <small>THON</small>
+              </div>
+
+              <span class="shape shape-one"></span>
+              <span class="shape shape-two"></span>
+
             </div>
+
+
             <div class="course-body">
-              <div class="course-meta"><span>برنامه‌نویسی</span><span>۲۴ جلسه</span></div>
-              <h3>Python از صفر تا بازار کار</h3>
-              <p>پروژه‌محور، مناسب شروع جدی برنامه‌نویسی</p>
-              <div class="course-footer"><strong>۲,۴۹۰,۰۰۰ <small>تومان</small></strong><a href="#">جزئیات ←</a></div>
+
+              <span>
+                {% trans "برنامه‌نویسی" %}
+              </span>
+
+              <span>
+                {% trans "python_sessions" %}
+              </span>
+
+              <h3>
+                {% trans "Python از صفر تا بازار کار" %}
+              </h3>
+
+              <p>
+                {% trans "پروژه‌محور، مناسب شروع جدی برنامه‌نویسی" %}
+              </p>
+
+
+              <div class="course-footer">
+
+                <strong>
+                  {% trans "python_price" %}
+                </strong>
+
+                <a href="#">
+                  {% trans "جزئیات" %} ←
+                </a>
+
+              </div>
+
             </div>
+
           </article>
+
+
+          <!-- Django -->
 
           <article class="course-card reveal reveal-delay">
+
             <div class="course-cover cover-blue">
-              <span class="course-tag">جدید</span>
-              <div class="cover-code django">DJ<br><small>ANGO</small></div>
-              <span class="shape shape-three"></span><span class="shape shape-four"></span>
+
+              <span class="course-tag">
+                {% trans "جدید" %}
+              </span>
+
+              <div class="cover-code django">
+                DJ<br>
+                <small>ANGO</small>
+              </div>
+
+              <span class="shape shape-three"></span>
+              <span class="shape shape-four"></span>
+
             </div>
+
+
             <div class="course-body">
-              <div class="course-meta"><span>Backend</span><span>۲۰ جلسه</span></div>
-              <h3>Django حرفه‌ای و REST API</h3>
-              <p>ساخت وب‌اپلیکیشن واقعی با پایتون و جنگو</p>
-              <div class="course-footer"><strong>۳,۱۹۰,۰۰۰ <small>تومان</small></strong><a href="#">جزئیات ←</a></div>
+
+              <div class="course-meta">
+
+                <span>
+                  {% trans "Backend" %}
+                </span>
+
+                <span>
+                  {% trans "django_sessions" %}
+                </span>
+
+              </div>
+
+
+              <h3>
+                {% trans "Django حرفه‌ای و REST API" %}
+              </h3>
+
+
+              <p>
+                {% trans "ساخت وب‌اپلیکیشن واقعی با پایتون و جنگو" %}
+              </p>
+
+
+              <div class="course-footer">
+
+                <strong>
+                  {% trans "django_price" %}
+                </strong>
+
+                <a href="#">
+                  {% trans "جزئیات" %} ←
+                </a>
+
+              </div>
+
             </div>
+
           </article>
+
+
+          <!-- JavaScript -->
 
           <article class="course-card reveal reveal-delay-2">
+
             <div class="course-cover cover-orange">
-              <span class="course-tag">محبوب</span>
-              <div class="cover-code js">JS<br><small>CRIPT</small></div>
-              <span class="shape shape-five"></span><span class="shape shape-six"></span>
+
+              <span class="course-tag">
+                {% trans "محبوب" %}
+              </span>
+
+              <div class="cover-code js">
+                JS<br>
+                <small>CRIPT</small>
+              </div>
+
+              <span class="shape shape-five"></span>
+              <span class="shape shape-six"></span>
+
             </div>
+
+
             <div class="course-body">
-              <div class="course-meta"><span>Frontend</span><span>۱۸ جلسه</span></div>
-              <h3>JavaScript مدرن</h3>
-              <p>از مبانی تا ساخت پروژه‌های تعاملی حرفه‌ای</p>
-              <div class="course-footer"><strong>۲,۱۹۰,۰۰۰ <small>تومان</small></strong><a href="#">جزئیات ←</a></div>
+
+              <div class="course-meta">
+
+                <span>
+                  {% trans "Frontend" %}
+                </span>
+
+                <span>
+                  {% trans "js_sessions" %}
+                </span>
+
+              </div>
+
+
+              <h3>
+                {% trans "JavaScript مدرن" %}
+              </h3>
+
+
+              <p>
+                {% trans "از مبانی تا ساخت پروژه‌های تعاملی حرفه‌ای" %}
+              </p>
+
+
+              <div class="course-footer">
+
+                <strong>
+                  {% trans "js_price" %}
+                </strong>
+
+                <a href="#">
+                  {% trans "جزئیات" %} ←
+                </a>
+
+              </div>
+
             </div>
+
           </article>
+
         </div>
+
       </div>
+
     </section>
 
-    <section class="section features-section" id="features">
+
+    <!-- =========================
+         FEATURES
+         ========================= -->
+
+    <section
+      class="section features-section"
+      id="features">
+
       <div class="container feature-grid">
+
+
         <div class="feature-intro reveal">
-          <span class="section-kicker">چرا آکادمی نووا؟</span>
-          <h2>فقط دوره نمی‌خری؛<br><em>مسیر یادگیری</em> می‌سازی.</h2>
-          <p>همه‌چیز برای اینکه یادگیری منظم، قابل اندازه‌گیری و لذت‌بخش باشد، در یک محیط یکپارچه کنار هم قرار گرفته است.</p>
-          <a class="btn btn-dark" href="{% url 'signup' %}">شروع یادگیری <span>←</span></a>
+
+          <span class="section-kicker">
+            {% trans "چرا آکادمی نووا؟" %}
+          </span>
+
+
+          <h2>
+
+            {% trans "فقط دوره نمی‌خری؛" %}
+
+            <br>
+
+            <em>
+              {% trans "مسیر یادگیری" %}
+            </em>
+
+            {% trans "می‌سازی." %}
+
+          </h2>
+
+
+          <p>
+            {% trans "همه‌چیز برای اینکه یادگیری منظم، قابل اندازه‌گیری و لذت‌بخش باشد، در یک محیط یکپارچه کنار هم قرار گرفته است." %}
+          </p>
+
+
+          <a
+            class="btn btn-dark"
+            href="{% url 'signup' %}">
+
+            {% trans "شروع یادگیری" %}
+
+            <span>←</span>
+
+          </a>
+
         </div>
+
 
         <div class="feature-list">
-          <div class="feature-item reveal"><div class="feature-number">۰۱</div><div><h3>کلاس‌های زنده و ضبط‌شده</h3><p>در زمان مناسب خودت یاد بگیر و هیچ جلسه‌ای را از دست نده.</p></div><div class="feature-symbol">◌</div></div>
-          <div class="feature-item reveal reveal-delay"><div class="feature-number">۰۲</div><div><h3>داشبورد پیشرفت شخصی</h3><p>ساعت مطالعه، نمره‌ها و مسیر پیشرفتت همیشه جلوی چشم توست.</p></div><div class="feature-symbol">↗</div></div>
-          <div class="feature-item reveal reveal-delay-2"><div class="feature-number">۰۳</div><div><h3>پرداخت امن و ثبت‌نام سریع</h3><p>ثبت‌نام در دوره‌ها و مدیریت پرداخت‌ها ساده و یکپارچه است.</p></div><div class="feature-symbol">⌁</div></div>
+
+
+          <div class="feature-item reveal">
+
+            <div class="feature-number">
+              {% trans "۰۱" %}
+            </div>
+
+            <div>
+
+              <h3>
+                {% trans "کلاس‌های زنده و ضبط‌شده" %}
+              </h3>
+
+              <p>
+                {% trans "در زمان مناسب خودت یاد بگیر و هیچ جلسه‌ای را از دست نده." %}
+              </p>
+
+            </div>
+
+            <div class="feature-symbol">
+              ◌
+            </div>
+
+          </div>
+
+
+          <div class="feature-item reveal reveal-delay">
+
+            <div class="feature-number">
+              {% trans "۰۲" %}
+            </div>
+
+            <div>
+
+              <h3>
+                {% trans "داشبورد پیشرفت شخصی" %}
+              </h3>
+
+              <p>
+                {% trans "ساعت مطالعه، نمره‌ها و مسیر پیشرفتت همیشه جلوی چشم توست." %}
+              </p>
+
+            </div>
+
+            <div class="feature-symbol">
+              ↗
+            </div>
+
+          </div>
+
+
+          <div class="feature-item reveal reveal-delay-2">
+
+            <div class="feature-number">
+              {% trans "۰۳" %}
+            </div>
+
+            <div>
+
+              <h3>
+                {% trans "پرداخت امن و ثبت‌نام سریع" %}
+              </h3>
+
+              <p>
+                {% trans "ثبت‌نام در دوره‌ها و مدیریت پرداخت‌ها ساده و یکپارچه است." %}
+              </p>
+
+            </div>
+
+            <div class="feature-symbol">
+              ⌁
+            </div>
+
+          </div>
+
         </div>
+
       </div>
+
     </section>
 
-    <section class="section stats-section" id="about">
+
+    <!-- =========================
+         STATS
+         ========================= -->
+
+    <section
+      class="section stats-section"
+      id="about">
+
       <div class="container stats-container">
-        <div class="big-stat"><strong data-counter="2500">۰</strong><span>+</span><p>دانشجوی فعال</p></div>
-        <div class="big-stat"><strong data-counter="48">۰</strong><span>+</span><p>دوره تخصصی</p></div>
-        <div class="big-stat"><strong data-counter="35">۰</strong><span>+</span><p>مدرس حرفه‌ای</p></div>
-        <div class="big-stat"><strong data-counter="96">۰</strong><span>%</span><p>رضایت دانشجویان</p></div>
+
+
+        <div class="big-stat">
+
+          <strong data-counter="2500">
+            0
+          </strong>
+
+          <span>+</span>
+
+          <p>
+            {% trans "دانشجوی فعال" %}
+          </p>
+
+        </div>
+
+
+        <div class="big-stat">
+
+          <strong data-counter="48">
+            0
+          </strong>
+
+          <span>+</span>
+
+          <p>
+            {% trans "دوره تخصصی" %}
+          </p>
+
+        </div>
+
+
+        <div class="big-stat">
+
+          <strong data-counter="35">
+            0
+          </strong>
+
+          <span>+</span>
+
+          <p>
+            {% trans "مدرس حرفه‌ای" %}
+          </p>
+
+        </div>
+
+
+        <div class="big-stat">
+
+          <strong data-counter="96">
+            0
+          </strong>
+
+          <span>%</span>
+
+          <p>
+            {% trans "رضایت دانشجویان" %}
+          </p>
+
+        </div>
+
       </div>
+
     </section>
 
-    <section class="cta-section" id="contact">
+
+    <!-- =========================
+         CTA
+         ========================= -->
+
+    <section
+      class="cta-section"
+      id="contact">
+
       <div class="container cta-card reveal">
+
+
         <div class="cta-content">
-          <span class="section-kicker">آماده‌ای؟</span>
-          <h2>اولین قدم را امروز بردار.</h2>
-          <p>ثبت‌نام کن و مسیر یادگیری شخصی خودت را در نووا شروع کن.</p>
-          <a class="btn btn-white" href="{% url 'signup' %}">ساخت حساب کاربری <span>←</span></a>
+
+          <span class="section-kicker">
+            {% trans "آماده‌ای؟" %}
+          </span>
+
+
+          <h2>
+            {% trans "اولین قدم را امروز بردار." %}
+          </h2>
+
+
+          <p>
+            {% trans "ثبت‌نام کن و مسیر یادگیری شخصی خودت را در نووا شروع کن." %}
+          </p>
+
+
+          <a
+            class="btn btn-white"
+            href="{% url 'signup' %}">
+
+            {% trans "ساخت حساب کاربری" %}
+
+            <span>←</span>
+
+          </a>
+
         </div>
-        <div class="cta-art"><span class="ring ring-1"></span><span class="ring ring-2"></span><span class="spark">✦</span><div class="cta-orb">N</div></div>
+
+
+        <div class="cta-art">
+
+          <span class="ring ring-1"></span>
+          <span class="ring ring-2"></span>
+
+          <span class="spark">
+            ✦
+          </span>
+
+          <div class="cta-orb">
+            N
+          </div>
+
+        </div>
+
       </div>
+
     </section>
+
   </main>
 
+
+  <!-- =========================
+       FOOTER
+       ========================= -->
+
   <footer class="site-footer">
+
     <div class="container footer-grid">
+
+
       <div>
-        <a class="brand footer-brand" href="#top"><span class="brand-mark"><span>ن</span></span><span class="brand-copy"><strong>آکادمی نووا</strong><small>NOVA ACADEMY</small></span></a>
-        <p>یادگیری بهتر، آینده روشن‌تر.</p>
+
+        <a
+          class="brand footer-brand"
+          href="#top">
+
+          <span class="brand-mark">
+            <span>ن</span>
+          </span>
+
+          <span class="brand-copy">
+
+            <strong>
+              {% trans "آکادمی نووا" %}
+            </strong>
+
+            <small>
+              NOVA ACADEMY
+            </small>
+
+          </span>
+
+        </a>
+
+
+        <p>
+          {% trans "یادگیری بهتر، آینده روشن‌تر." %}
+        </p>
+
       </div>
-      <div class="footer-links"><strong>دسترسی سریع</strong><a href="#courses">دوره‌ها</a><a href="#features">امکانات</a><a href="#about">درباره ما</a></div>
-      <div class="footer-links"><strong>پشتیبانی</strong><a href="#">سؤالات متداول</a><a href="#">قوانین و مقررات</a><a href="#">تماس با ما</a></div>
-      <div class="newsletter"><strong>از نووا باخبر باش</strong><p>برای دریافت خبر دوره‌های جدید ایمیلت را وارد کن.</p><form id="newsletterForm"><input type="email" placeholder="ایمیل شما" required><button type="submit">←</button></form><small id="newsletterMsg"></small></div>
+
+
+      <div class="footer-links">
+
+        <strong>
+          {% trans "دسترسی سریع" %}
+        </strong>
+
+        <a href="#courses">
+          {% trans "دوره‌ها" %}
+        </a>
+
+        <a href="#features">
+          {% trans "امکانات" %}
+        </a>
+
+        <a href="#about">
+          {% trans "درباره ما" %}
+        </a>
+
+      </div>
+
+
+      <div class="footer-links">
+
+        <strong>
+          {% trans "پشتیبانی" %}
+        </strong>
+
+        <a href="#">
+          {% trans "سؤالات متداول" %}
+        </a>
+
+        <a href="#">
+          {% trans "قوانین و مقررات" %}
+        </a>
+
+        <a href="#contact">
+          {% trans "تماس با ما" %}
+        </a>
+
+      </div>
+
+
+      <div class="newsletter">
+
+        <strong>
+          {% trans "از نووا باخبر باش" %}
+        </strong>
+
+        <p>
+          {% trans "برای دریافت خبر دوره‌های جدید ایمیلت را وارد کن." %}
+        </p>
+
+
+        <form id="newsletterForm">
+
+          <input
+            type="email"
+            placeholder="{% trans 'ایمیل شما' %}"
+            required>
+
+          <button type="submit">
+            ←
+          </button>
+
+        </form>
+
+
+        <small id="newsletterMsg"></small>
+
+      </div>
+
     </div>
-    <div class="container footer-bottom"><span>© ۱۴۰۵ آکادمی نووا — تمامی حقوق محفوظ است.</span><span>ساخته‌شده با ♥ برای یادگیری</span></div>
+
+
+    <div class="container footer-bottom">
+
+      <span>
+        {% trans "© ۱۴۰۵ آکادمی نووا — تمامی حقوق محفوظ است." %}
+      </span>
+
+      <span>
+        {% trans "ساخته‌شده با ♥ برای یادگیری" %}
+      </span>
+
+    </div>
+
   </footer>
 
-  <button class="back-top" id="backTop" aria-label="بازگشت به بالا">↑</button>
+
+  <!-- Back To Top -->
+
+  <button
+    class="back-top"
+    id="backTop"
+    aria-label="{% trans 'بازگشت به بالا' %}">
+    ↑
+  </button>
+
+
+  <!-- JavaScript -->
+
   <script src="{% static 'js/main.js' %}"></script>
+
+  <script src="{% static 'js/theme.js' %}"></script>
+
 </body>
 </html>

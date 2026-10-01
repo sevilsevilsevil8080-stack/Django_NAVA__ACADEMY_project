@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
@@ -10,6 +11,101 @@
     <title>ورود | Nova Academy</title>
 
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
+
+    <style>
+
+/* Login input boxes */
+.login-form input[type="email"],
+.login-form input[type="password"] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px 16px;
+    margin-top: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.06);
+    color: #ffffff;
+    font-size: 15px;
+    outline: none;
+    transition: all 0.25s ease;
+    direction: ltr;
+}
+
+/* Placeholder */
+.login-form input[type="email"]::placeholder,
+.login-form input[type="password"]::placeholder {
+    color: rgba(255, 255, 255, 0.45);
+}
+
+/* وقتی روی باکس کلیک می‌کنی */
+.login-form input[type="email"]:focus,
+.login-form input[type="password"]:focus {
+    border-color: rgba(255, 255, 255, 0.45);
+    background: rgba(255, 255, 255, 0.09);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.05);
+}
+
+/* فاصله بین فیلدها */
+.login-form p {
+    margin-bottom: 18px;
+}
+
+
+
+
+.language-switcher {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    z-index: 1000;
+}
+
+.language-switcher form {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
+}
+
+.language-switcher button {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: #ffffff !important;
+    padding: 7px 10px !important;
+    border-radius: 8px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+}
+
+.language-switcher button:hover {
+    background: rgba(255, 255, 255, 0.16) !important;
+    border-color: rgba(255, 255, 255, 0.35) !important;
+}
+
+.language-switcher span {
+    width: 1px;
+    height: 18px;
+    background: rgba(255, 255, 255, 0.3);
+    display: block;
+}
+
+@media (max-width: 600px) {
+    .language-switcher {
+        top: 15px;
+        right: 15px;
+    }
+
+    .language-switcher button {
+        padding: 6px 9px !important;
+        font-size: 12px !important;
+    }
+}
+    </style>
 </head>
 
 <body>
@@ -17,15 +113,27 @@
 
     <main class="login-page">
 
+        <!-- Language Switcher -->
+        <div class="language-switcher">
+            <form action="{% url 'set_language' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ request.get_full_path }}">
+
+                <button type="submit" name="language" value="fa">فا</button>
+                <span></span>
+                <button type="submit" name="language" value="en">EN</button>
+            </form>
+        </div>
+
 
         <section class="login-card">
 
             <h1 class="login-title">
-                ورود به آکادمی نووا 🎓
+                {% trans "ورود به آکادمی نووا 🎓" %}
             </h1>
 
             <p class="login-description">
-                برای ورود به حساب کاربری خود اطلاعاتتان را وارد کنید.
+                {% trans "برای ورود به حساب کاربری خود اطلاعاتتان را وارد کنید." %}
             </p>
 
             {% if error %}
@@ -40,7 +148,7 @@
 
                 <p>
                     <label for="email">
-                        ایمیل
+                        {% trans "ایمیل" %}
                     </label>
 
                     <input
@@ -54,42 +162,44 @@
 
                 <p>
                     <label for="password">
-                        رمز عبور
+                        {% trans "رمز عبور" %}
                     </label>
 
                     <input
                         type="password"
                         id="password"
                         name="password"
-                        placeholder="رمز عبور خود را وارد کنید"
+                        placeholder="{% trans 'رمز عبور خود را وارد کنید' %}"
                         required
                     >
                 </p>
 
                 <button type="submit" class="login-button">
-                    ورود به حساب
+                    {% trans "ورود به حساب" %}
                 </button>
 
             </form>
 
             <div class="login-footer">
-                حساب کاربری ندارید؟
+                {% trans "حساب کاربری ندارید؟" %}
+
                 <a href="{% url 'signup' %}">
-                    ثبت نام کنید
+                    {% trans "ثبت نام کنید" %}
                 </a>
             </div>
 
 
-
         <header class="dashboard-header">
-        
+
             <a href="{% url 'register' %}" class="logout" style=" text-decoration: none;
                 color: #ff8b8b;
                 padding: 10px 5px;
                 border: 1px solid rgba(255, 139, 139, 0.25);
                 border-radius: 10px;width:300px;
                 margin:auto;display: flex;justify-content: center;align-items: center;margin-top:50px;">
-               برگشت به صفحه اصلی
+
+                {% trans "برگشت به صفحه اصلی" %}
+
             </a>
 
         </header>
@@ -100,8 +210,6 @@
 
     </main>
 
-
-        
 
 </body>
 

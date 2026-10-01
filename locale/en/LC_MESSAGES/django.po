@@ -1,0 +1,725 @@
+# English translations for NAVA Academy
+# Copyright (C) 2026 NAVA Academy
+# This file is distributed under the same license as the NAVA Academy project.
+msgid ""
+msgstr ""
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-01 16:35+0330\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+
+#: .\NAVA_ACADEMI\forms.py:12 .\templates\nava_academy\dashboard.html:403
+msgid "نام"
+msgstr "First Name"
+
+#: .\NAVA_ACADEMI\forms.py:15
+msgid "نام خود را وارد کنید"
+msgstr "Enter your first name"
+
+#: .\NAVA_ACADEMI\forms.py:22 .\templates\nava_academy\dashboard.html:426
+msgid "نام خانوادگی"
+msgstr "Last Name"
+
+#: .\NAVA_ACADEMI\forms.py:25
+msgid "نام خانوادگی خود را وارد کنید"
+msgstr "Enter your last name"
+
+#: .\NAVA_ACADEMI\forms.py:31 .\templates\nava_academy\dashboard.html:449
+#: .\templates\nava_academy\login.html:151
+msgid "ایمیل"
+msgstr "Email"
+
+#: .\NAVA_ACADEMI\forms.py:34
+msgid "example@email.com"
+msgstr "example@email.com"
+
+#: .\NAVA_ACADEMI\forms.py:41 .\templates\nava_academy\dashboard.html:472
+msgid "شماره موبایل"
+msgstr "Mobile Number"
+
+#: .\NAVA_ACADEMI\forms.py:44
+msgid "09123456789"
+msgstr "09123456789"
+
+#: .\NAVA_ACADEMI\forms.py:50 .\templates\nava_academy\dashboard.html:495
+msgid "آدرس"
+msgstr "Address"
+
+#: .\NAVA_ACADEMI\forms.py:54
+msgid "آدرس خود را وارد کنید"
+msgstr "Enter your address"
+
+#: .\NAVA_ACADEMI\forms.py:61 .\NAVA_ACADEMI\forms.py:64
+#: .\templates\nava_academy\login.html:165
+msgid "رمز عبور"
+msgstr "Password"
+
+#: .\NAVA_ACADEMI\forms.py:70
+msgid "تکرار رمز عبور"
+msgstr "Confirm Password"
+
+#: .\NAVA_ACADEMI\forms.py:73
+msgid "رمز عبور را دوباره وارد کنید"
+msgstr "Enter your password again"
+
+#: .\NAVA_ACADEMI\forms.py:83
+msgid "این ایمیل قبلاً ثبت شده است."
+msgstr "This email is already registered."
+
+#: .\NAVA_ACADEMI\forms.py:97
+msgid "رمز عبور و تکرار آن یکسان نیستند."
+msgstr "Passwords do not match."
+
+
+#: .\templates\nava_academy\course_detail.html:123
+msgid "بازگشت به دوره‌ها"
+msgstr "Back to Courses"
+
+#: .\templates\nava_academy\course_detail.html:147
+msgid "اطلاعات دوره"
+msgstr "Course Information"
+
+#: .\templates\nava_academy\course_detail.html:161
+msgid "ثبت‌نام در این دوره"
+msgstr "Enroll in This Course"
+
+#: .\templates\nava_academy\course_detail.html:170
+#: .\templates\nava_academy\payment.html:161
+msgid "مدرس"
+msgstr "Instructor"
+
+#: .\templates\nava_academy\course_detail.html:183
+msgid "ظرفیت"
+msgstr "Capacity"
+
+#: .\templates\nava_academy\course_detail.html:187
+#: .\templates\nava_academy\courses.html:162
+msgid "نفر"
+msgstr "people"
+
+#: .\templates\nava_academy\course_detail.html:196
+msgid "شهریه"
+msgstr "Tuition"
+
+#: .\templates\nava_academy\course_detail.html:200
+#: .\templates\nava_academy\courses.html:167
+#: .\templates\nava_academy\dashboard.html:338
+#: .\templates\nava_academy\payment.html:209
+msgid "تومان"
+msgstr "Toman"
+
+#: .\templates\nava_academy\course_detail.html:209
+msgid "شروع دوره"
+msgstr "Course Start"
+
+
+#: .\templates\nava_academy\courses.html:11
+#: .\templates\nava_academy\register.html:138
+#: .\templates\nava_academy\register.html:461
+#: .\templates\nava_academy\register.html:1151
+msgid "دوره‌ها"
+msgstr "Courses"
+
+#: .\templates\nava_academy\courses.html:112
+#: .\templates\nava_academy\dashboard.html:11
+msgid "داشبورد"
+msgstr "Dashboard"
+
+#: .\templates\nava_academy\courses.html:123
+msgid "دوره‌های آموزشی 📚"
+msgstr "Educational Courses 📚"
+
+#: .\templates\nava_academy\courses.html:127
+msgid "دوره‌های فعال آکادمی نووا را مشاهده کنید."
+msgstr "View the active courses at NOVA Academy."
+
+#: .\templates\nava_academy\courses.html:156
+#: .\templates\nava_academy\dashboard.html:328
+msgid "مدرس:"
+msgstr "Instructor:"
+
+#: .\templates\nava_academy\courses.html:161
+msgid "ظرفیت:"
+msgstr "Capacity:"
+
+#: .\templates\nava_academy\courses.html:166
+#: .\templates\nava_academy\dashboard.html:337
+msgid "شهریه:"
+msgstr "Tuition:"
+
+#: .\templates\nava_academy\courses.html:171
+msgid "شروع دوره:"
+msgstr "Course Start:"
+
+#: .\templates\nava_academy\courses.html:176
+msgid "مشاهده دوره"
+msgstr "View Course"
+
+#: .\templates\nava_academy\courses.html:184
+msgid "در حال حاضر دوره فعالی وجود ندارد."
+msgstr "There are currently no active courses."
+
+
+#: .\templates\nava_academy\dashboard.html:124
+msgid "خروج از حساب"
+msgstr "Log Out"
+
+#: .\templates\nava_academy\dashboard.html:142
+msgid "سلام"
+msgstr "Hello"
+
+#: .\templates\nava_academy\dashboard.html:149
+msgid "به پنل دانش‌آموزی آکادمی نووا خوش آمدی."
+msgstr "Welcome to the NOVA Academy student dashboard."
+
+#: .\templates\nava_academy\dashboard.html:175
+msgid "دوره‌های موجود/فعال"
+msgstr "Available/Active Courses"
+
+#: .\templates\nava_academy\dashboard.html:182
+msgid "دوره ثبت‌نام شده"
+msgstr "Enrolled Courses"
+
+#: .\templates\nava_academy\dashboard.html:201
+msgid "وضعیت شهریه"
+msgstr "Tuition Status"
+
+#: .\templates\nava_academy\dashboard.html:208
+msgid "وضعیت پرداخت شهریه در این بخش نمایش داده می‌شود."
+msgstr "Your tuition payment status is displayed here."
+
+#: .\templates\nava_academy\dashboard.html:227
+msgid "پروفایل من"
+msgstr "My Profile"
+
+#: .\templates\nava_academy\dashboard.html:234
+msgid "اطلاعات حساب کاربری شما در پایین صفحه قرار دارد."
+msgstr "Your account information is shown below."
+
+#: .\templates\nava_academy\dashboard.html:250
+msgid "شما هنوز شهریه بعضی از دوره‌ها را پرداخت نکرده‌اید."
+msgstr "You have not paid the tuition for some of your courses yet."
+
+#: .\templates\nava_academy\dashboard.html:257
+msgid "دوره:"
+msgstr "Course:"
+
+#: .\templates\nava_academy\dashboard.html:265
+msgid "پرداخت شهریه"
+msgstr "Pay Tuition"
+
+#: .\templates\nava_academy\dashboard.html:291
+msgid "دوره‌های من 📚"
+msgstr "My Courses 📚"
+
+#: .\templates\nava_academy\dashboard.html:361
+msgid "هنوز در هیچ دوره‌ای ثبت‌نام نکرده‌اید."
+msgstr "You are not enrolled in any courses yet."
+
+#: .\templates\nava_academy\dashboard.html:388
+msgid "اطلاعات حساب کاربری"
+msgstr "Account Information"
+
+
+#: .\templates\nava_academy\login.html:132
+msgid "ورود به آکادمی نووا 🎓"
+msgstr "Login to NOVA Academy 🎓"
+
+#: .\templates\nava_academy\login.html:136
+msgid "برای ورود به حساب کاربری خود اطلاعاتتان را وارد کنید."
+msgstr "Enter your information to log in to your account."
+
+#: .\templates\nava_academy\login.html:172
+msgid "رمز عبور خود را وارد کنید"
+msgstr "Enter your password"
+
+#: .\templates\nava_academy\login.html:178
+msgid "ورود به حساب"
+msgstr "Log In"
+
+#: .\templates\nava_academy\login.html:184
+msgid "حساب کاربری ندارید؟"
+msgstr "Don't have an account?"
+
+#: .\templates\nava_academy\login.html:187
+msgid "ثبت نام کنید"
+msgstr "Sign Up"
+
+#: .\templates\nava_academy\login.html:201
+#: .\templates\nava_academy\signup.html:214
+msgid "برگشت به صفحه اصلی"
+msgstr "Back to Home"
+
+
+#: .\templates\nava_academy\payment.html:119
+msgid "بازگشت به داشبورد"
+msgstr "Back to Dashboard"
+
+#: .\templates\nava_academy\payment.html:131
+#: .\templates\nava_academy\payment.html:222
+msgid "پرداخت شهریه 💳"
+msgstr "Pay Tuition 💳"
+
+#: .\templates\nava_academy\payment.html:136
+msgid "اطلاعات پرداخت دوره خود را بررسی کنید."
+msgstr "Review your course payment information."
+
+#: .\templates\nava_academy\payment.html:148
+msgid "دوره"
+msgstr "Course"
+
+#: .\templates\nava_academy\payment.html:174
+msgid "وضعیت پرداخت"
+msgstr "Payment Status"
+
+#: .\templates\nava_academy\payment.html:187
+msgid "شماره پرداخت"
+msgstr "Payment Number"
+
+#: .\templates\nava_academy\payment.html:205
+msgid "مبلغ قابل پرداخت"
+msgstr "Amount Due"
+
+
+#: .\templates\nava_academy\register.html:102
+msgid "صفحه اصلی آکادمی نووا"
+msgstr "NOVA Academy home page"
+
+#: .\templates\nava_academy\register.html:108
+#: .\templates\nava_academy\register.html:1125
+msgid "آکادمی نووا"
+msgstr "NOVA Academy"
+
+#: .\templates\nava_academy\register.html:120
+msgid "باز کردن منو"
+msgstr "Open menu"
+
+#: .\templates\nava_academy\register.html:134
+msgid "خانه"
+msgstr "Home"
+
+#: .\templates\nava_academy\register.html:142
+#: .\templates\nava_academy\register.html:1155
+msgid "امکانات"
+msgstr "Features"
+
+#: .\templates\nava_academy\register.html:146
+#: .\templates\nava_academy\register.html:1159
+msgid "درباره ما"
+msgstr "About Us"
+
+#: .\templates\nava_academy\register.html:150
+#: .\templates\nava_academy\register.html:1180
+msgid "تماس با ما"
+msgstr "Contact Us"
+
+#: .\templates\nava_academy\register.html:208
+msgid "ورود"
+msgstr "Login"
+
+#: .\templates\nava_academy\register.html:214
+msgid "ثبت‌نام رایگان"
+msgstr "Free Sign Up"
+
+#: .\templates\nava_academy\register.html:247
+msgid "مسیر یادگیری تو از همین‌جا شروع می‌شود"
+msgstr "Your learning journey starts here"
+
+#: .\templates\nava_academy\register.html:254
+msgid "یاد بگیر,"
+msgstr "Learn,"
+
+#: .\templates\nava_academy\register.html:257
+msgid "رشد کن"
+msgstr "Grow"
+
+#: .\templates\nava_academy\register.html:262
+msgid "آینده‌ات را بساز."
+msgstr "Build your future."
+
+#: .\templates\nava_academy\register.html:269
+msgid ""
+"در آکادمی نووا، دوره‌های کاربردی را با مدرس‌های حرفه‌ای یاد بگیر، پیشرفتت را "
+"دنبال کن و در یک محیط آموزشی مدرن قدم‌به‌قدم جلو برو"
+msgstr ""
+"At NOVA Academy, learn practical courses with professional instructors, "
+"track your progress, and move forward step by step in a modern learning "
+"environment."
+
+#: .\templates\nava_academy\register.html:280
+msgid "مشاهده دوره‌ها"
+msgstr "View Courses"
+
+#: .\templates\nava_academy\register.html:293
+msgid "چرا نووا؟"
+msgstr "Why NOVA?"
+
+#: .\templates\nava_academy\register.html:306
+msgid "دانشجویان"
+msgstr "Students"
+
+#: .\templates\nava_academy\register.html:321
+msgid "students_count"
+msgstr "2,500+"
+
+#: .\templates\nava_academy\register.html:325
+msgid "دانشجوی فعال در نووا"
+msgstr "Active students at NOVA"
+
+#: .\templates\nava_academy\register.html:334
+msgid "۴.۹"
+msgstr "4.9"
+
+#: .\templates\nava_academy\register.html:342
+#: .\templates\nava_academy\register.html:1030
+msgid "رضایت دانشجویان"
+msgstr "Student satisfaction"
+
+#: .\templates\nava_academy\register.html:369
+msgid "داشبورد یادگیری"
+msgstr "Learning Dashboard"
+
+#: .\templates\nava_academy\register.html:373
+msgid "سلام، سارا 👋"
+msgstr "Hello, Sara 👋"
+
+#: .\templates\nava_academy\register.html:390
+msgid "پیشرفت این هفته"
+msgstr "This week's progress"
+
+#: .\templates\nava_academy\register.html:394
+msgid "progress_percent"
+msgstr "78%"
+
+#: .\templates\nava_academy\register.html:410
+msgid "study_hours"
+msgstr "12 study hours"
+
+#: .\templates\nava_academy\register.html:414
+msgid "study_goal"
+msgstr "Goal: 15 hours"
+
+#: .\templates\nava_academy\register.html:432
+#: .\templates\nava_academy\register.html:448
+msgid "ادامه دوره"
+msgstr "Continue course"
+
+#: .\templates\nava_academy\register.html:440
+msgid "lesson_progress"
+msgstr "Lesson 12 of 18"
+
+#: .\templates\nava_academy\register.html:465
+msgid "courses_count"
+msgstr "4"
+
+#: .\templates\nava_academy\register.html:469
+msgid "فعال"
+msgstr "Active"
+
+#: .\templates\nava_academy\register.html:478
+msgid "ساعت یادگیری"
+msgstr "Learning hours"
+
+#: .\templates\nava_academy\register.html:482
+msgid "learning_hours"
+msgstr "38"
+
+#: .\templates\nava_academy\register.html:486
+msgid "این ماه"
+msgstr "This month"
+
+#: .\templates\nava_academy\register.html:495
+msgid "امتیاز"
+msgstr "Score"
+
+#: .\templates\nava_academy\register.html:499
+msgid "score_value"
+msgstr "92"
+
+#: .\templates\nava_academy\register.html:503
+msgid "از ۱۰۰"
+msgstr "out of 100"
+
+#: .\templates\nava_academy\register.html:524
+msgid "یک قدم تا گواهی!"
+msgstr "One step away from your certificate!"
+
+#: .\templates\nava_academy\register.html:528
+msgid "دوره Python پیشرفته"
+msgstr "Advanced Python Course"
+
+#: .\templates\nava_academy\register.html:545
+msgid "کلاس زنده"
+msgstr "Live Class"
+
+#: .\templates\nava_academy\register.html:549
+msgid "شروع در ۱۰ دقیقه"
+msgstr "Starts in 10 minutes"
+
+#: .\templates\nava_academy\register.html:581
+msgid "یادگیری با استانداردهای حرفه‌ای"
+msgstr "Learn with professional standards"
+
+#: .\templates\nava_academy\register.html:615
+msgid "دوره‌های محبوب"
+msgstr "Popular Courses"
+
+#: .\templates\nava_academy\register.html:619
+msgid "مسیر مناسب خودت را پیدا کن."
+msgstr "Find the right path for you."
+
+#: .\templates\nava_academy\register.html:629
+msgid "مشاهده همه دوره‌ها"
+msgstr "View All Courses"
+
+#: .\templates\nava_academy\register.html:648
+msgid "پرفروش"
+msgstr "Best Seller"
+
+#: .\templates\nava_academy\register.html:665
+msgid "برنامه‌نویسی"
+msgstr "Programming"
+
+#: .\templates\nava_academy\register.html:669
+msgid "python_sessions"
+msgstr "24 sessions"
+
+#: .\templates\nava_academy\register.html:673
+msgid "Python از صفر تا بازار کار"
+msgstr "Python from Zero to Job Market"
+
+#: .\templates\nava_academy\register.html:677
+msgid "پروژه‌محور، مناسب شروع جدی برنامه‌نویسی"
+msgstr "Project-based, perfect for seriously starting programming"
+
+#: .\templates\nava_academy\register.html:684
+msgid "python_price"
+msgstr "2,490,000 Toman"
+
+#: .\templates\nava_academy\register.html:688
+#: .\templates\nava_academy\register.html:751
+#: .\templates\nava_academy\register.html:814
+msgid "جزئیات"
+msgstr "Details"
+
+#: .\templates\nava_academy\register.html:705
+msgid "جدید"
+msgstr "New"
+
+#: .\templates\nava_academy\register.html:724
+msgid "Backend"
+msgstr "Backend"
+
+#: .\templates\nava_academy\register.html:728
+msgid "django_sessions"
+msgstr "20 sessions"
+
+#: .\templates\nava_academy\register.html:735
+msgid "Django حرفه‌ای و REST API"
+msgstr "Professional Django and REST API"
+
+#: .\templates\nava_academy\register.html:740
+msgid "ساخت وب‌اپلیکیشن واقعی با پایتون و جنگو"
+msgstr "Build real web applications with Python and Django"
+
+#: .\templates\nava_academy\register.html:747
+msgid "django_price"
+msgstr "3,190,000 Toman"
+
+#: .\templates\nava_academy\register.html:768
+msgid "محبوب"
+msgstr "Popular"
+
+#: .\templates\nava_academy\register.html:787
+msgid "Frontend"
+msgstr "Frontend"
+
+#: .\templates\nava_academy\register.html:791
+msgid "js_sessions"
+msgstr "18 sessions"
+
+#: .\templates\nava_academy\register.html:798
+msgid "JavaScript مدرن"
+msgstr "Modern JavaScript"
+
+#: .\templates\nava_academy\register.html:803
+msgid "از مبانی تا ساخت پروژه‌های تعاملی حرفه‌ای"
+msgstr "From the basics to building professional interactive projects"
+
+#: .\templates\nava_academy\register.html:810
+msgid "js_price"
+msgstr "2,190,000 Toman"
+
+#: .\templates\nava_academy\register.html:844
+msgid "چرا آکادمی نووا؟"
+msgstr "Why NOVA Academy?"
+
+#: .\templates\nava_academy\register.html:850
+msgid "فقط دوره نمی‌خری؛"
+msgstr "You're not just buying a course;"
+
+#: .\templates\nava_academy\register.html:855
+msgid "مسیر یادگیری"
+msgstr "a learning path"
+
+#: .\templates\nava_academy\register.html:858
+msgid "می‌سازی."
+msgstr "you're building."
+
+#: .\templates\nava_academy\register.html:864
+msgid ""
+"همه‌چیز برای اینکه یادگیری منظم، قابل اندازه‌گیری و لذت‌بخش باشد، در یک محیط "
+"یکپارچه کنار هم قرار گرفته است."
+msgstr ""
+"Everything you need for organized, measurable, and enjoyable learning is "
+"brought together in one integrated environment."
+
+#: .\templates\nava_academy\register.html:872
+msgid "شروع یادگیری"
+msgstr "Start Learning"
+
+#: .\templates\nava_academy\register.html:887
+msgid "۰۱"
+msgstr "01"
+
+#: .\templates\nava_academy\register.html:893
+msgid "کلاس‌های زنده و ضبط‌شده"
+msgstr "Live and Recorded Classes"
+
+#: .\templates\nava_academy\register.html:897
+msgid "در زمان مناسب خودت یاد بگیر و هیچ جلسه‌ای را از دست نده."
+msgstr "Learn at your own time and never miss a session."
+
+#: .\templates\nava_academy\register.html:912
+msgid "۰۲"
+msgstr "02"
+
+#: .\templates\nava_academy\register.html:918
+msgid "داشبورد پیشرفت شخصی"
+msgstr "Personal Progress Dashboard"
+
+#: .\templates\nava_academy\register.html:922
+msgid "ساعت مطالعه، نمره‌ها و مسیر پیشرفتت همیشه جلوی چشم توست."
+msgstr ""
+"Your study hours, grades, and progress path are always in front of you."
+
+#: .\templates\nava_academy\register.html:937
+msgid "۰۳"
+msgstr "03"
+
+#: .\templates\nava_academy\register.html:943
+msgid "پرداخت امن و ثبت‌نام سریع"
+msgstr "Secure Payment and Quick Registration"
+
+#: .\templates\nava_academy\register.html:947
+msgid "ثبت‌نام در دوره‌ها و مدیریت پرداخت‌ها ساده و یکپارچه است."
+msgstr "Course registration and payment management are simple and integrated."
+
+#: .\templates\nava_academy\register.html:985
+msgid "دانشجوی فعال"
+msgstr "Active Students"
+
+#: .\templates\nava_academy\register.html:1000
+msgid "دوره تخصصی"
+msgstr "Specialized Courses"
+
+#: .\templates\nava_academy\register.html:1015
+msgid "مدرس حرفه‌ای"
+msgstr "Professional Instructors"
+
+#: .\templates\nava_academy\register.html:1054
+msgid "آماده‌ای؟"
+msgstr "Are you ready?"
+
+#: .\templates\nava_academy\register.html:1059
+msgid "اولین قدم را امروز بردار."
+msgstr "Take the first step today."
+
+#: .\templates\nava_academy\register.html:1064
+msgid "ثبت‌نام کن و مسیر یادگیری شخصی خودت را در نووا شروع کن."
+msgstr "Sign up and start your personal learning journey at NOVA."
+
+#: .\templates\nava_academy\register.html:1072
+msgid "ساخت حساب کاربری"
+msgstr "Create an Account"
+
+#: .\templates\nava_academy\register.html:1138
+msgid "یادگیری بهتر، آینده روشن‌تر."
+msgstr "Better learning, a brighter future."
+
+#: .\templates\nava_academy\register.html:1147
+msgid "دسترسی سریع"
+msgstr "Quick Links"
+
+#: .\templates\nava_academy\register.html:1168
+msgid "پشتیبانی"
+msgstr "Support"
+
+#: .\templates\nava_academy\register.html:1172
+msgid "سؤالات متداول"
+msgstr "Frequently Asked Questions"
+
+#: .\templates\nava_academy\register.html:1176
+msgid "قوانین و مقررات"
+msgstr "Terms and Conditions"
+
+#: .\templates\nava_academy\register.html:1189
+msgid "از نووا باخبر باش"
+msgstr "Stay Updated with NOVA"
+
+#: .\templates\nava_academy\register.html:1193
+msgid "برای دریافت خبر دوره‌های جدید ایمیلت را وارد کن."
+msgstr "Enter your email to receive news about new courses."
+
+#: .\templates\nava_academy\register.html:1201
+msgid "ایمیل شما"
+msgstr "Your email"
+
+#: .\templates\nava_academy\register.html:1221
+msgid "© ۱۴۰۵ آکادمی نووا — تمامی حقوق محفوظ است."
+msgstr "© 2026 NOVA Academy — All rights reserved."
+
+#: .\templates\nava_academy\register.html:1225
+msgid "ساخته‌شده با ♥ برای یادگیری"
+msgstr "Made with ♥ for learning"
+
+#: .\templates\nava_academy\register.html:1238
+msgid "بازگشت به بالا"
+msgstr "Back to top"
+
+
+#: .\templates\nava_academy\signup.html:11
+#: .\templates\nava_academy\signup.html:188
+msgid "ثبت نام"
+msgstr "Sign Up"
+
+#: .\templates\nava_academy\signup.html:84
+msgid "ثبت نام در آکادمی نووا"
+msgstr "Sign Up at NOVA Academy"
+
+#: .\templates\nava_academy\signup.html:88
+msgid "اطلاعات خود را وارد کنید تا حساب کاربری شما ساخته شود."
+msgstr "Enter your information to create your account."
+
+
+# Old translations kept for reference
+#~ msgid "۱۲ ساعت مطالعه"
+#~ msgstr "12 hours studied"
+
+#~ msgid "هدف: ۱۵ ساعت"
+#~ msgstr "Goal: 15 hours"
+
+#~ msgid "جلسه ۱۲ از ۱۸"
+#~ msgstr "Lesson 12 of 18"
+
+#~ msgid "۲۴ جلسه"
+#~ msgstr "24 Lessons"
+
+#~ msgid "۲۰ جلسه"
+#~ msgstr "20 Lessons"
+
+#~ msgid "۱۸ جلسه"
+#~ msgstr "18 Lessons"

@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
@@ -7,252 +8,520 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>داشبورد | Nova Academy</title>
+    <title>{% trans "داشبورد" %} | Nova Academy</title>
 
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    
+
+
+    <style>
+
+        .language-switcher {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            z-index: 1000;
+        }
+
+        .language-switcher form {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin: 0;
+        }
+
+        .language-switcher button {
+            background: rgba(255,255,255,0.08) !important;
+            border: 1px solid rgba(255,255,255,0.2) !important;
+            color: white !important;
+            padding: 7px 10px !important;
+            border-radius: 8px !important;
+            font-size: 13px !important;
+            font-weight: 600 !important;
+            cursor: pointer !important;
+            width: auto !important;
+            height: auto !important;
+            margin: 0 !important;
+            transition: .2s ease;
+        }
+
+        .language-switcher button:hover {
+            background: rgba(255,255,255,0.16) !important;
+        }
+
+        .language-switcher span {
+            width: 1px;
+            height: 18px;
+            background: rgba(255,255,255,.3);
+        }
+
+
+        @media(max-width:600px){
+
+            .language-switcher{
+                top:15px;
+                right:15px;
+            }
+
+            .language-switcher button{
+                padding:6px 9px !important;
+                font-size:12px !important;
+            }
+
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
-    <main class="dashboard">
 
-        <!-- Header -->
-
-        <header class="dashboard-header">
-
-            <div class="brand">
-                Nova Academy 🎓
-            </div>
-
-            <a href="{% url 'logout' %}" class="logout">
-                خروج از حساب
-            </a>
-
-        </header>
+<main class="dashboard">
 
 
-        <!-- Welcome -->
+    <!-- Language Switcher -->
 
-        <section class="welcome">
+    <div class="language-switcher">
 
-            <h1>
-                سلام {{ user.first_name }} 👋
-            </h1>
+        <form action="{% url 'set_language' %}" method="post">
 
-            <p>
-                به پنل دانش‌آموزی آکادمی نووا خوش آمدی.
-            </p>
+            {% csrf_token %}
 
-        </section>
+            <input type="hidden" name="next" value="{{ request.get_full_path }}">
+
+            <button type="submit" name="language" value="fa">
+                فا
+            </button>
+
+            <span></span>
+
+            <button type="submit" name="language" value="en">
+                EN
+            </button>
+
+        </form>
+
+    </div>
 
 
-        <!-- Dashboard Cards -->
 
-        <section class="dashboard-cards">
+    <!-- Header -->
 
-            <a href="{% url 'course_list' %}" class="dashboard-card">
+
+    <header class="dashboard-header">
+
+
+        <div class="brand">
+            Nova Academy 🎓
+        </div>
+
+
+
+        <a href="{% url 'logout' %}" class="logout">
+
+            {% trans "خروج از حساب" %}
+
+        </a>
+
+
+    </header>
+
+
+
+
+    <!-- Welcome -->
+
+
+    <section class="welcome">
+
+
+        <h1>
+
+            {% trans "سلام" %} {{ user.first_name }} 👋
+
+        </h1>
+
+
+        <p>
+
+            {% trans "به پنل دانش‌آموزی آکادمی نووا خوش آمدی." %}
+
+        </p>
+
+
+    </section>
+
+
+
+
+    <!-- Dashboard Cards -->
+
+
+    <section class="dashboard-cards">
+
+
+        <a href="{% url 'course_list' %}" class="dashboard-card">
+
 
             <div class="card-icon">
                 📚
             </div>
 
+
             <h3>
-                دوره‌های موجود/فعال
+
+                {% trans "دوره‌های موجود/فعال" %}
+
             </h3>
 
+
             <p>
-                {{ enrollments|length }} دوره ثبت‌نام شده
+
+                {{ enrollments|length }} {% trans "دوره ثبت‌نام شده" %}
+
             </p>
+
 
         </a>
 
 
-            <div class="dashboard-card">
 
-                <div class="card-icon">
-                    💳
-                </div>
+        <div class="dashboard-card">
 
-                <h3>
-                    وضعیت شهریه
-                </h3>
 
-                <p>
-                    وضعیت پرداخت شهریه در این بخش نمایش داده می‌شود.
-                </p>
-
+            <div class="card-icon">
+                💳
             </div>
 
 
-            <div class="dashboard-card">
+            <h3>
 
-                <div class="card-icon">
-                    👤
-                </div>
+                {% trans "وضعیت شهریه" %}
 
-                <h3>
-                    پروفایل من
-                </h3>
+            </h3>
 
-                <p>
-                    اطلاعات حساب کاربری شما در پایین صفحه قرار دارد.
-                </p>
 
+            <p>
+
+                {% trans "وضعیت پرداخت شهریه در این بخش نمایش داده می‌شود." %}
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="dashboard-card">
+
+
+            <div class="card-icon">
+                👤
             </div>
 
-        </section>
+
+            <h3>
+
+                {% trans "پروفایل من" %}
+
+            </h3>
 
 
-        <!-- Profile-box -->
-        {% if pending_payments %}
-            <div class="course-message">
-                ⚠️ شما هنوز شهریه بعضی از دوره‌ها را پرداخت نکرده‌اید.
+            <p>
 
-                {% for payment in pending_payments %}
-                    <p>
-                        دوره:
-                        {{ payment.enrollment.course.title }}
-                    </p>
+                {% trans "اطلاعات حساب کاربری شما در پایین صفحه قرار دارد." %}
 
-                    <a href="{% url 'payment_page' payment.id %}">
-                        پرداخت شهریه
+            </p>
+
+
+        </div>
+
+
+    </section>
+
+    <!-- Pending Payments -->
+
+    {% if pending_payments %}
+
+        <div class="course-message">
+
+            ⚠️ {% trans "شما هنوز شهریه بعضی از دوره‌ها را پرداخت نکرده‌اید." %}
+
+
+            {% for payment in pending_payments %}
+
+                <p>
+
+                    {% trans "دوره:" %}
+                    {{ payment.enrollment.course.title }}
+
+                </p>
+
+
+                <a href="{% url 'payment_page' payment.id %}">
+
+                    {% trans "پرداخت شهریه" %}
+
+                </a>
+
+
+            {% endfor %}
+
+
+        </div>
+
+
+    {% endif %}
+
+
+
+
+
+
+    <!-- My Courses -->
+
+
+    <section class="profile-box">
+
+
+        <h2>
+
+            {% trans "دوره‌های من 📚" %}
+
+        </h2>
+
+
+
+        {% if enrollments %}
+
+
+            <div class="dashboard-cards">
+
+
+                {% for enrollment in enrollments %}
+
+
+                    <a href="{% url 'course_detail' enrollment.course.id %}"
+                       class="dashboard-card">
+
+
+                        <div class="card-icon">
+
+                            📚
+
+                        </div>
+
+
+
+                        <h3>
+
+                            {{ enrollment.course.title }}
+
+                        </h3>
+
+
+
+                        <p>
+
+                            {% trans "مدرس:" %}
+                            {{ enrollment.course.teacher }}
+
+                        </p>
+
+
+
+                        <p>
+
+                            {% trans "شهریه:" %}
+                            {{ enrollment.course.price }} {% trans "تومان" %}
+
+                        </p>
+
+
+
                     </a>
+
+
+
                 {% endfor %}
+
+
+
             </div>
+
+
+
+        {% else %}
+
+
+            <p>
+
+                {% trans "هنوز در هیچ دوره‌ای ثبت‌نام نکرده‌اید." %}
+
+            </p>
+
+
+
         {% endif %}
-        
-        <section class="profile-box">
-
-            <h2>
-                دوره‌های من 📚
-            </h2>
-
-            {% if enrollments %}
-
-                <div class="dashboard-cards">
-
-                    {% for enrollment in enrollments %}
-
-                        <a
-                            href="{% url 'course_detail' enrollment.course.id %}"
-                            class="dashboard-card"
-                        >
-
-                            <div class="card-icon">
-                                📚
-                            </div>
-
-                            <h3>
-                                {{ enrollment.course.title }}
-                            </h3>
-
-                            <p>
-                                مدرس:
-                                {{ enrollment.course.teacher }}
-                            </p>
-
-                            <p>
-                                شهریه:
-                                {{ enrollment.course.price }} تومان
-                            </p>
-
-                        </a>
-
-                    {% endfor %}
-
-                </div>
-
-            {% else %}
-
-                <p>
-                    هنوز در هیچ دوره‌ای ثبت‌نام نکرده‌اید.
-                </p>
-
-            {% endif %}
-
-        </section>
 
 
-        <!-- Profile -->
 
-        <section class="profile-box">
-
-            <h2>
-                اطلاعات حساب کاربری
-            </h2>
-
-            <div class="profile-info">
-
-                <div class="info-item">
-
-                    <span class="info-label">
-                        نام
-                    </span>
-
-                    <span class="info-value">
-                        {{ user.first_name }}
-                    </span>
-
-                </div>
+    </section>
 
 
-                <div class="info-item">
-
-                    <span class="info-label">
-                        نام خانوادگی
-                    </span>
-
-                    <span class="info-value">
-                        {{ user.last_name }}
-                    </span>
-
-                </div>
 
 
-                <div class="info-item">
-
-                    <span class="info-label">
-                        ایمیل
-                    </span>
-
-                    <span class="info-value">
-                        {{ user.email }}
-                    </span>
-
-                </div>
 
 
-                <div class="info-item">
-
-                    <span class="info-label">
-                        شماره موبایل
-                    </span>
-
-                    <span class="info-value">
-                        {{ profile.phone }}
-                    </span>
-
-                </div>
 
 
-                <div class="info-item">
+    <!-- Profile -->
 
-                    <span class="info-label">
-                        آدرس
-                    </span>
 
-                    <span class="info-value">
-                        {{ profile.address|default:"ثبت نشده" }}
-                    </span>
+    <section class="profile-box">
 
-                </div>
+
+        <h2>
+
+            {% trans "اطلاعات حساب کاربری" %}
+
+        </h2>
+
+
+
+        <div class="profile-info">
+
+
+
+            <div class="info-item">
+
+
+                <span class="info-label">
+
+                    {% trans "نام" %}
+
+                </span>
+
+
+                <span class="info-value">
+
+                    {{ user.first_name }}
+
+                </span>
+
 
             </div>
 
-        </section>
 
-    </main>
+
+
+
+            <div class="info-item">
+
+
+                <span class="info-label">
+
+                    {% trans "نام خانوادگی" %}
+
+                </span>
+
+
+                <span class="info-value">
+
+                    {{ user.last_name }}
+
+                </span>
+
+
+            </div>
+
+
+
+
+
+            <div class="info-item">
+
+
+                <span class="info-label">
+
+                    {% trans "ایمیل" %}
+
+                </span>
+
+
+                <span class="info-value">
+
+                    {{ user.email }}
+
+                </span>
+
+
+            </div>
+
+
+
+
+
+            <div class="info-item">
+
+
+                <span class="info-label">
+
+                    {% trans "شماره موبایل" %}
+
+                </span>
+
+
+                <span class="info-value">
+
+                    {{ profile.phone }}
+
+                </span>
+
+
+            </div>
+
+
+
+
+
+            <div class="info-item">
+
+
+                <span class="info-label">
+
+                    {% trans "آدرس" %}
+
+                </span>
+
+
+                <span class="info-value">
+
+                    {{ profile.address|default:"ثبت نشده" }}
+
+                </span>
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+    </section>
+
+
+
+
+</main>
+
+
 
 </body>
+
 
 </html>

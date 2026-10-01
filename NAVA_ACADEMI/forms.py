@@ -1,61 +1,78 @@
 from django import forms
 from django.contrib.auth.models import User
+from django.utils.translation import gettext_lazy as _
+
 from .models import StudentProfile
 
 
 class StudentRegistrationForm(forms.Form):
+
     first_name = forms.CharField(
         max_length=150,
-        label='نام',
-        widget=forms.TextInput(attrs={
-            'placeholder': 'نام خود را وارد کنید'
-        })
+        label=_('نام'),
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': _('نام خود را وارد کنید')
+            }
+        )
     )
 
     last_name = forms.CharField(
         max_length=150,
-        label='نام خانوادگی',
-        widget=forms.TextInput(attrs={
-            'placeholder': 'نام خانوادگی خود را وارد کنید'
-        })
+        label=_('نام خانوادگی'),
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': _('نام خانوادگی خود را وارد کنید')
+            }
+        )
     )
 
     email = forms.EmailField(
-        label='ایمیل',
-        widget=forms.EmailInput(attrs={
-            'placeholder': 'example@email.com'
-        })
+        label=_('ایمیل'),
+        widget=forms.EmailInput(
+            attrs={
+                'placeholder': _('example@email.com')
+            }
+        )
     )
 
     phone = forms.CharField(
         max_length=15,
-        label='شماره موبایل',
-        widget=forms.TextInput(attrs={
-            'placeholder': '09123456789'
-        })
+        label=_('شماره موبایل'),
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': _('09123456789')
+            }
+        )
     )
 
     address = forms.CharField(
-        label='آدرس',
+        label=_('آدرس'),
         required=False,
-        widget=forms.Textarea(attrs={
-            'placeholder': 'آدرس خود را وارد کنید',
-            'rows': 3
-        })
+        widget=forms.Textarea(
+            attrs={
+                'placeholder': _('آدرس خود را وارد کنید'),
+                'rows': 3
+            }
+        )
     )
 
     password = forms.CharField(
-        label='رمز عبور',
-        widget=forms.PasswordInput(attrs={
-            'placeholder': 'رمز عبور'
-        })
+        label=_('رمز عبور'),
+        widget=forms.PasswordInput(
+            attrs={
+                'placeholder': _('رمز عبور')
+            }
+        )
     )
 
     password_confirm = forms.CharField(
-        label='تکرار رمز عبور',
-        widget=forms.PasswordInput(attrs={
-            'placeholder': 'رمز عبور را دوباره وارد کنید'
-        })
+        label=_('تکرار رمز عبور'),
+        widget=forms.PasswordInput(
+            attrs={
+                'placeholder': _('رمز عبور را دوباره وارد کنید')
+            }
+        )
     )
 
     def clean_email(self):
@@ -63,7 +80,7 @@ class StudentRegistrationForm(forms.Form):
 
         if User.objects.filter(email=email).exists():
             raise forms.ValidationError(
-                'این ایمیل قبلاً ثبت شده است.'
+                _('این ایمیل قبلاً ثبت شده است.')
             )
 
         return email
@@ -77,7 +94,7 @@ class StudentRegistrationForm(forms.Form):
         if password and password_confirm:
             if password != password_confirm:
                 raise forms.ValidationError(
-                    'رمز عبور و تکرار آن یکسان نیستند.'
+                    _('رمز عبور و تکرار آن یکسان نیستند.')
                 )
 
         return cleaned_data

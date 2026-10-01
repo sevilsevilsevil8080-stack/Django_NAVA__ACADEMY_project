@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
@@ -6,18 +7,107 @@
 <head>
 
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>پرداخت شهریه | Nova Academy</title>
 
     <link rel="stylesheet" href="{% static 'css/payment.css' %}">
 
+    <style>
+
+        .language-switcher {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            z-index: 1000;
+        }
+
+        .language-switcher form {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin: 0;
+        }
+
+        .language-switcher button {
+            background: rgba(255,255,255,0.08) !important;
+            border: 1px solid rgba(255,255,255,0.2) !important;
+            color: white !important;
+            padding: 7px 10px !important;
+            border-radius: 8px !important;
+            font-size: 13px !important;
+            font-weight: 600 !important;
+            cursor: pointer !important;
+            width: auto !important;
+            height: auto !important;
+            margin: 0 !important;
+            transition: .2s ease;
+        }
+
+        .language-switcher button:hover {
+            background: rgba(255,255,255,0.16) !important;
+        }
+
+        .language-switcher span {
+            width: 1px;
+            height: 18px;
+            background: rgba(255,255,255,.3);
+        }
+
+        @media (max-width: 600px) {
+
+            .language-switcher {
+                top: 15px;
+                right: 15px;
+            }
+
+            .language-switcher button {
+                padding: 6px 9px !important;
+                font-size: 12px !important;
+            }
+
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
     <main class="payment-page">
+
+
+        <!-- Language Switcher -->
+
+        <div class="language-switcher">
+
+            <form action="{% url 'set_language' %}" method="post">
+
+                {% csrf_token %}
+
+                <input
+                    type="hidden"
+                    name="next"
+                    value="{{ request.get_full_path }}"
+                >
+
+                <button type="submit" name="language" value="fa">
+                    فا
+                </button>
+
+                <span></span>
+
+                <button type="submit" name="language" value="en">
+                    EN
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- Header -->
 
         <header class="payment-header">
 
@@ -26,29 +116,36 @@
             </div>
 
             <a href="{% url 'student_dashboard' %}" class="back-button">
-                بازگشت به داشبورد
+                {% trans "بازگشت به داشبورد" %}
             </a>
 
         </header>
 
 
+        <!-- Payment Card -->
+
         <section class="payment-card">
 
+
             <h1 class="payment-title">
-                پرداخت شهریه 💳
+                {% trans "پرداخت شهریه 💳" %}
             </h1>
 
+
             <p class="payment-subtitle">
-                اطلاعات پرداخت دوره خود را بررسی کنید.
+                {% trans "اطلاعات پرداخت دوره خود را بررسی کنید." %}
             </p>
 
 
+            <!-- Payment Information -->
+
             <div class="payment-info">
+
 
                 <div class="info-item">
 
                     <span class="info-label">
-                        دوره
+                        {% trans "دوره" %}
                     </span>
 
                     <span class="info-value">
@@ -61,7 +158,7 @@
                 <div class="info-item">
 
                     <span class="info-label">
-                        مدرس
+                        {% trans "مدرس" %}
                     </span>
 
                     <span class="info-value">
@@ -69,10 +166,12 @@
                     </span>
 
                 </div>
+
+
                 <div class="info-item">
 
                     <span class="info-label">
-                        وضعیت پرداخت
+                        {% trans "وضعیت پرداخت" %}
                     </span>
 
                     <span class="info-value">
@@ -85,7 +184,7 @@
                 <div class="info-item">
 
                     <span class="info-label">
-                        شماره پرداخت
+                        {% trans "شماره پرداخت" %}
                     </span>
 
                     <span class="info-value">
@@ -94,33 +193,40 @@
 
                 </div>
 
+
             </div>
 
+
+            <!-- Amount -->
 
             <div class="amount-box">
 
                 <span class="amount-label">
-                    مبلغ قابل پرداخت
+                    {% trans "مبلغ قابل پرداخت" %}
                 </span>
 
                 <div class="amount">
-                    {{ payment.amount }} تومان
+                    {{ payment.amount }} {% trans "تومان" %}
                 </div>
 
             </div>
 
+
+            <!-- Payment Button -->
 
             <form method="POST">
 
                 {% csrf_token %}
 
                 <button type="submit" class="payment-button">
-                    پرداخت شهریه 💳
+                    {% trans "پرداخت شهریه 💳" %}
                 </button>
 
             </form>
 
+
         </section>
+
 
     </main>
 

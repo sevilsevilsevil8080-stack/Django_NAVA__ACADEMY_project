@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
@@ -10,17 +11,106 @@
     <title>{{ course.title }} | Nova Academy</title>
 
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+
+    <style>
+
+        .language-switcher {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            z-index: 1000;
+        }
+
+        .language-switcher form {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin: 0;
+        }
+
+        .language-switcher button {
+            background: rgba(255,255,255,0.08) !important;
+            border: 1px solid rgba(255,255,255,0.2) !important;
+            color: white !important;
+            padding: 7px 10px !important;
+            border-radius: 8px !important;
+            font-size: 13px !important;
+            font-weight: 600 !important;
+            cursor: pointer !important;
+            width: auto !important;
+            height: auto !important;
+            margin: 0 !important;
+            transition: .2s ease;
+        }
+
+        .language-switcher button:hover {
+            background: rgba(255,255,255,0.16) !important;
+        }
+
+        .language-switcher span {
+            width: 1px;
+            height: 18px;
+            background: rgba(255,255,255,.3);
+        }
+
+        @media(max-width:600px) {
+
+            .language-switcher {
+                top: 15px;
+                right: 15px;
+            }
+
+            .language-switcher button {
+                padding: 6px 9px !important;
+                font-size: 12px !important;
+            }
+
+        }
+
+    </style>
+
 </head>
 
 <body>
 
     <main class="dashboard">
 
-            {% if message %}
-        <div class="course-message">
-            {{ message }}
+
+        <!-- Language Switcher -->
+
+        <div class="language-switcher">
+
+            <form action="{% url 'set_language' %}" method="post">
+
+                {% csrf_token %}
+
+                <input type="hidden" name="next" value="{{ request.get_full_path }}">
+
+                <button type="submit" name="language" value="fa">
+                    فا
+                </button>
+
+                <span></span>
+
+                <button type="submit" name="language" value="en">
+                    EN
+                </button>
+
+            </form>
+
         </div>
-            {% endif %}
+
+
+        {% if message %}
+
+            <div class="course-message">
+                {{ message }}
+            </div>
+
+        {% endif %}
+
+
+        <!-- Header -->
 
         <header class="dashboard-header">
 
@@ -29,10 +119,15 @@
             </div>
 
             <a href="{% url 'course_list' %}" class="logout">
-                بازگشت به دوره‌ها
+
+                {% trans "بازگشت به دوره‌ها" %}
+
             </a>
 
         </header>
+
+
+        <!-- Course Welcome -->
 
         <section class="welcome">
 
@@ -46,60 +141,85 @@
 
         </section>
 
-        <section class="profile-box">
+<section class="profile-box">
 
-            <h2>
-                اطلاعات دوره
-            </h2>
+    <h2>
+        {% trans "اطلاعات دوره" %}
+    </h2>
 
-            <div class="profile-info">
-                
-                <br>
+    <div class="profile-info">
 
-               <form method="POST" action="{% url 'enroll_course' course.id %}" class="enroll-form">
+        <br>
 
-                    {% csrf_token %}
+        <form method="POST"
+              action="{% url 'enroll_course' course.id %}"
+              class="enroll-form">
 
-                    <button type="submit" class="enroll-button">
-                        ثبت‌نام در این دوره
-                    </button>
+            {% csrf_token %}
 
-                </form>
+            <button type="submit" class="enroll-button">
+                {% trans "ثبت‌نام در این دوره" %}
+            </button>
 
-                <div class="info-item">
-                    <span class="info-label">مدرس</span>
-                    <span class="info-value">
-                        {{ course.teacher }}
-                    </span>
-                </div>
+        </form>
 
-                <div class="info-item">
-                    <span class="info-label">ظرفیت</span>
-                    <span class="info-value">
-                        {{ course.capacity }} نفر
-                    </span>
-                </div>
 
-                <div class="info-item">
-                    <span class="info-label">شهریه</span>
-                    <span class="info-value">
-                        {{ course.price }} تومان
-                    </span>
-                </div>
+        <div class="info-item">
 
-                <div class="info-item">
-                    <span class="info-label">شروع دوره</span>
-                    <span class="info-value">
-                        {{ course.start_date }}
-                    </span>
-                </div>
-                
+            <span class="info-label">
+                {% trans "مدرس" %}
+            </span>
 
-            </div>
+            <span class="info-value">
+                {{ course.teacher }}
+            </span>
 
-        </section>
+        </div>
 
-    </main>
+
+        <div class="info-item">
+
+            <span class="info-label">
+                {% trans "ظرفیت" %}
+            </span>
+
+            <span class="info-value">
+                {{ course.capacity }} {% trans "نفر" %}
+            </span>
+
+        </div>
+
+
+        <div class="info-item">
+
+            <span class="info-label">
+                {% trans "شهریه" %}
+            </span>
+
+            <span class="info-value">
+                {{ course.price }} {% trans "تومان" %}
+            </span>
+
+        </div>
+
+
+        <div class="info-item">
+
+            <span class="info-label">
+                {% trans "شروع دوره" %}
+            </span>
+
+            <span class="info-value">
+                {{ course.start_date }}
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
 
 </body>
 

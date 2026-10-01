@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
@@ -7,23 +8,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>ثبت نام | Nova Academy</title>
+    <title>{% trans "ثبت نام" %} | Nova Academy</title>
 
     <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+
+    <style>
+.language-switcher {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 10;
+}
+
+.language-switcher form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin: 0;
+}
+
+.language-switcher button {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: #ffffff !important;
+    padding: 7px 10px !important;
+    border-radius: 8px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+}
+
+.language-switcher button:hover {
+    background: rgba(255, 255, 255, 0.16) !important;
+    border-color: rgba(255, 255, 255, 0.35) !important;
+}
+
+.language-switcher span {
+    width: 1px;
+    height: 18px;
+    background: rgba(255, 255, 255, 0.3);
+    display: block;
+}
+    </style>
 </head>
 
 <body>
+
+
+     <!-- Language Switcher -->
+        <div class="language-switcher">
+            <form action="{% url 'set_language' %}" method="post"style="margin-top: 20px;">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ request.get_full_path }}">
+
+                <button type="submit" name="language" value="fa">فا</button>
+                <span></span>
+                <button type="submit" name="language" value="en">EN</button>
+            </form>
+        </div>
+
+
 
     <main class="signup-page">
 
         <section class="signup-card">
 
             <h1 class="signup-title">
-                ثبت نام در آکادمی نووا
+                {% trans "ثبت نام در آکادمی نووا" %}
             </h1>
 
             <p class="signup-description">
-                اطلاعات خود را وارد کنید تا حساب کاربری شما ساخته شود.
+                {% trans "اطلاعات خود را وارد کنید تا حساب کاربری شما ساخته شود." %}
             </p>
 
             <form method="POST" class="signup-form">
@@ -40,7 +102,9 @@
                     {% for error in form.first_name.errors %}
                         <div class="error">{{ error }}</div>
                     {% endfor %}
-                </div><div class="form-group">
+                </div>
+
+                <div class="form-group">
                     <label for="{{ form.last_name.id_for_label }}">
                         {{ form.last_name.label }}
                     </label>
@@ -121,7 +185,7 @@
                 {% endif %}
 
                 <button type="submit" class="signup-button">
-                    ثبت نام
+                    {% trans "ثبت نام" %}
                 </button>
 
             </form>
@@ -131,8 +195,14 @@
 
     </main>
 
+
+
+
+
+
+
         <header class="dashboard-header">
-        
+
             <a href="{% url 'register' %}" class="logout" style=" text-decoration: none;
                 color: #ff8b8b;
                 padding: 10px 16px;
@@ -140,7 +210,9 @@
                 border-radius: 10px;
                 transition: 0.2s ease;width:300px;
                 margin:auto;display: flex;justify-content: center;align-items: center;margin-bottom: 50px;height:50px;">
-               برگشت به صفحه اصلی
+               
+                {% trans "برگشت به صفحه اصلی" %}
+
             </a>
 
         </header>
