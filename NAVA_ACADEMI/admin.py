@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import StudentProfile, Course, Enrollment, Payment
+from .models import StudentProfile, Course, Enrollment, Payment, Notification
 
 @admin.register(StudentProfile)
 class StudentProfileAdmin(admin.ModelAdmin):
@@ -15,10 +15,6 @@ class StudentProfileAdmin(admin.ModelAdmin):
         'user__last_name',
         'phone',
     )
-
-
-
-
 
 
 
@@ -126,3 +122,37 @@ class PaymentAdmin(admin.ModelAdmin):
 
 
 
+
+
+
+
+
+
+@admin.register(Notification)
+class NotificationAdmin(admin.ModelAdmin):
+
+    list_display = (
+        'user',
+        'title_fa',
+        'title_en',
+        'is_read',
+        'created_at',
+    )
+
+    list_filter = (
+        'is_read',
+        'created_at',
+    )
+
+    search_fields = (
+        'user__username',
+        'user__email',
+        'title_fa',
+        'title_en',
+        'message_fa',
+        'message_en',
+    )
+
+    ordering = (
+        '-created_at',
+    )

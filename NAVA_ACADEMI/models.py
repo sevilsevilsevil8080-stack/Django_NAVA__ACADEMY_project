@@ -35,9 +35,7 @@ class StudentProfile(models.Model):
         return self.user.get_full_name() or self.user.username
 
 
-
-
-
+    
 
 
 
@@ -217,4 +215,47 @@ class Payment(models.Model):
 
 
 
+class Notification(models.Model):
 
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='notifications',
+        verbose_name='کاربر'
+    )
+
+    title_fa = models.CharField(
+        max_length=200,
+        verbose_name='عنوان فارسی'
+    )
+
+    message_fa = models.TextField(
+        verbose_name='متن فارسی'
+    )
+
+    title_en = models.CharField(
+        max_length=200,
+        verbose_name='عنوان انگلیسی'
+    )
+
+    message_en = models.TextField(
+        verbose_name='متن انگلیسی'
+    )
+
+    is_read = models.BooleanField(
+        default=False,
+        verbose_name='خوانده شده'
+    )
+
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name='تاریخ ایجاد'
+    )
+
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = 'اعلان'
+        verbose_name_plural = 'اعلان‌ها'
+
+    def __str__(self):
+        return f"{self.user.username} - {self.title_fa}"

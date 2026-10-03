@@ -5,6 +5,10 @@ urlpatterns = [
     path('register/', views.register_student, name='register'),
     path('signup/', views.signup, name='signup'),
     path('dashboard/', views.student_dashboard, name='student_dashboard'),
+    path(
+    'notifications/<int:notification_id>/read/',
+    views.mark_notification_read,
+    name='mark_notification_read'),
     path('login/', views.login_student, name='login'),
     path('logout/', views.logout_student, name='logout'),
     path('courses/', views.course_list, name='course_list'),

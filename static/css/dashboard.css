@@ -206,3 +206,162 @@ body {
 
     text-align: center;
 }
+.notification-read-button {
+    border: none;
+    border-radius: 8px;
+    padding: 7px 12px;
+    background: #6655f5;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.notification-read-button:hover {
+    opacity: 0.9;
+}
+
+.notification-read-status {
+    margin-top: 9px;
+    font-size: 12px;
+    opacity: 0.65;
+}
+
+/* =========================================
+   Notification History Modal
+   ========================================= */
+
+.notification-history-modal {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+
+    z-index: 9999;
+
+    padding: 20px;
+
+    background: rgba(0, 0, 0, 0.58);
+
+    align-items: center;
+    justify-content: center;
+
+    overflow-y: auto;
+}
+
+.notification-history-modal.active {
+    display: flex;
+}
+
+
+/* خود پنجره */
+
+.notification-history-box {
+    width: min(650px, 100%);
+
+    max-height: calc(100vh - 40px);
+
+    overflow-y: auto;
+
+    margin: auto;
+
+    padding: 22px;
+
+    box-sizing: border-box;
+
+    background: #ffffff;
+
+    color: #242131;
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.35);
+}
+
+
+/* عنوان */
+
+.notification-history-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 18px;
+}
+
+.notification-history-modal-header h2 {
+    margin: 0;
+    color: #242131;
+}
+
+
+/* دکمه × */
+
+.notification-history-close {
+    width: 38px;
+    height: 38px;
+
+    border: none;
+    border-radius: 11px;
+
+    background: rgba(102, 85, 245, 0.10);
+
+    color: #6655f5;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.notification-history-close:hover {
+    background: rgba(102, 85, 245, 0.18);
+
+    transform: scale(1.05);
+}
+
+
+/* =========================================
+   Dark Mode
+   ========================================= */
+
+html[data-theme="dark"] .notification-history-modal {
+    background: rgba(0, 0, 0, 0.68);
+}
+
+html[data-theme="dark"] .notification-history-box {
+    background: #211e2d;
+
+    color: #ffffff;
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.55);
+}
+
+html[data-theme="dark"] .notification-history-modal-header h2 {
+    color: #ffffff;
+}
+
+
+/* =========================================
+   Mobile
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    .notification-history-modal {
+        padding: 10px;
+    }
+
+    .notification-history-box {
+        width: 100%;
+
+        max-height: calc(100vh - 20px);
+
+        padding: 16px;
+
+        border-radius: 18px;
+    }
+}

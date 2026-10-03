@@ -151,17 +151,27 @@
 
         <br>
 
-        <form method="POST"
-              action="{% url 'enroll_course' course.id %}"
-              class="enroll-form">
+        {% if enrolled_count >= course.capacity %}
 
-            {% csrf_token %}
+    <div class="course-message">
+        {% trans "ظرفیت این دوره تکمیل شده است." %}
+    </div>
 
-            <button type="submit" class="enroll-button">
-                {% trans "ثبت‌نام در این دوره" %}
-            </button>
+{% else %}
 
-        </form>
+    <form method="POST"
+          action="{% url 'enroll_course' course.id %}"
+          class="enroll-form">
+
+        {% csrf_token %}
+
+        <button type="submit" class="enroll-button">
+            {% trans "ثبت‌نام در این دوره" %}
+        </button>
+
+    </form>
+
+{% endif %}
 
 
         <div class="info-item">

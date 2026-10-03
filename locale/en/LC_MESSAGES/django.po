@@ -723,3 +723,26 @@ msgstr "Enter your information to create your account."
 
 #~ msgid "۱۸ جلسه"
 #~ msgstr "18 Lessons"
+
+# Notification translations
+
+msgid "اعلان‌های جدید"
+msgstr "New Notifications"
+
+msgid "اعلان جدیدی ندارید."
+msgstr "You have no new notifications."
+
+msgid "علامت‌گذاری به عنوان خوانده‌شده"
+msgstr "Mark as Read"
+
+msgid "سابقه اعلان‌ها"
+msgstr "Notification History"
+
+msgid "خوانده شده"
+msgstr "Read"
+
+msgid "هنوز سابقه‌ای وجود ندارد."
+msgstr "No notification history yet."
+
+msgid "اعلانات"
+msgstr "Notifications"
